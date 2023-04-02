@@ -14,7 +14,7 @@ const ServerPage = () => {
 
     return <div className="server-wrapper">
         <Routes>
-            <Route index path="/" element={<Home/>}/>
+            <Route index path="*" element={<Home/>}/>
             <Route path="home" element={<Home/>}/>
             <Route path="catalog" element={<Catalog/>}/>
             <Route path="sale" element={<Sale/>}/>
