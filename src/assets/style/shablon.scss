@@ -1,0 +1,16 @@
+@import "variables";
+%hoverBgColorRed:hover{
+   background-color: $red;
+}
+%hoverBgColorBlack:hover{
+   background-color: black;
+}
+%hoverColorBlack:hover{
+    color: black;
+}
+%hoverColorRed:hover{
+  color: $red;
+}
+%footerTitleWeight{
+  font-weight: 300;
+}

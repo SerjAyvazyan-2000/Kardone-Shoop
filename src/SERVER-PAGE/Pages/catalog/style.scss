@@ -1,0 +1,78 @@
+@import "../../../assets/style/variables";
+@import "src/assets/style/shablon";
+
+.catalog-section {
+  padding: 140px 0 0 0;
+}
+
+.catalog-header {
+  padding: $paddingPagesHeader;
+  background-color: $antiquewhite;
+
+}
+
+.catalog-title {
+  padding: $paddingPagesTitle;
+  border-bottom: 1px solid;
+
+
+  h3 {
+    font-size: $font-size-30;
+    font-weight: 300;
+  }
+}
+
+.catalog-pages {
+  padding: 10px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.catalog-item {
+  width: 270px;
+  height: 330px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.catalog-tem-bg {
+  position: absolute;
+  background-color: black;
+  opacity: .5;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: .3s;
+
+  &:hover {
+    opacity: .2;
+
+  }
+}
+
+.catalog-item-info {
+  position: absolute;
+  color: white;
+  h3 {
+    margin: 20px 0;
+    font-size: $font-size-30;
+    max-width: 270px;
+    text-align: center;
+
+
+  }
+
+  p {
+    text-align: center;
+    font-size: $font-size-30;
+
+  }
+
+
+}

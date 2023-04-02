@@ -1,0 +1,158 @@
+@import "../../../assets/style/variables";
+@import "src/assets/style/shablon";
+
+.footer-section {
+  padding: 50px 0 0 0;
+  min-height: 300px;
+  background-color: $antiquewhite;
+}
+
+.footer-block {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.footer-block >:not(:last-child){
+   margin: 0 0 20px;
+}
+
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  padding:0  20px;
+}
+
+
+.main-list {
+  display: flex;
+  flex-direction: column;
+
+  ul {
+    li {
+      a {
+        margin: 0 0 10px;
+        color: $Nav;
+
+        & {
+          @extend %hoverColorBlack
+        }
+      }
+    }
+  }
+  //@media screen and (max-width: 703px){
+  //  flex: 0 0 100px;
+  //}
+}
+
+.main-title {
+  margin: 0 0 15px;
+  font-size: $font-size-20;
+
+  h3 {
+    @extend %footerTitleWeight
+  }
+
+}
+
+.catalog-title-footer {
+  margin: 0 0 15px;
+  font-size: $font-size-20;
+
+  h3 {
+    @extend %footerTitleWeight
+  }
+}
+.our-shop{
+   padding: 0 20px;
+}
+.our-shop-title {
+  margin: 0 0 15px;
+  font-size: $font-size-20;
+
+  h3 {
+    @extend %footerTitleWeight
+  }
+}
+
+.newsletter-title {
+  margin: 0 0 15px;
+  font-size: $font-size-20;
+
+  h3 {
+    @extend %footerTitleWeight
+  }
+}
+
+.main-icon {
+  margin-top: 20px;
+  padding: 0 20px;
+  a {
+    margin: 0 20px 0 0;
+    background-color: $red;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: $font-size-20;
+    transition: .3s;
+    color: white;
+    cursor: pointer;
+
+    & {
+      @extend %hoverColorBlack
+    }
+  }
+
+}
+
+
+.catalog-footer {
+  padding: 0 20px;
+
+  ul {
+    li {
+      a {
+        margin: 0 0 10px;
+        color: $Nav;
+
+        & {
+          @extend %hoverColorBlack
+        }
+      }
+    }
+  }
+}
+
+.our-shop-info > *:not(last-child) {
+  margin: 0 0 10px;
+}
+
+.newsletter {
+  padding:0 20px;
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  label {
+    position: relative;
+
+  }
+
+  input {
+    padding: 10px;
+    color: black;
+  }
+
+  a {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    font-size: $font-size-20;
+    cursor: pointer;
+    color: black;
+    transition: .3s;
+
+    &{
+       @extend %hoverColorRed
+    }
+  }
+}

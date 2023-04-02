@@ -1,0 +1,270 @@
+@import "../../../assets/style/variables";
+@import "src/assets/style/shablon";
+
+.header-section {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  border-bottom: 1px dashed;
+}
+
+.header-content-row-1 {
+  height: 70px;
+  background-color: $antiquewhite;
+}
+
+.header-content-row-2 {
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.row-1-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  @media screen and (max-width: 600px) {
+    .search-block {
+      display: none;
+    }
+  }
+
+}
+
+.my-account-navigation {
+  flex: 1 1 auto;
+
+  ul {
+    li {
+      a {
+        margin: 10px;
+        color: $Nav;
+        transition: .3s;
+
+        & {
+          @extend %hoverColorBlack
+        }
+
+        i {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+.basket-search {
+  ul {
+    display: flex;
+    align-items: center;
+
+    li {
+      margin: 20px;
+
+      input {
+        padding: 5px;
+      }
+    }
+  }
+}
+
+.basket-navigation {
+  background-color: $red;
+  border-radius: 5px;
+  transition: .3s;
+
+  a {
+    padding: 7px 20px;
+    font-size: $font-size-20;
+    color: white;
+  }
+
+  & {
+    @extend %hoverBgColorBlack
+  }
+}
+
+
+.row-2-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  a {
+    font-size: 20px;
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 20px;
+
+        @media screen and (max-width: 359px) {
+          display: none;
+        }
+      }
+
+      h1 {
+        margin: 0 10px;
+        font-weight: bold;
+        color: black;
+
+        span {
+          color: $red;
+        }
+      }
+    }
+  }
+}
+
+.account-block {
+  display: flex;
+  justify-content: space-between;
+
+  ul {
+    display: flex;
+  }
+}
+
+.header-menu {
+  @media screen and (max-width: 800px) {
+    display: none;
+
+  }
+}
+
+.catalog-sub-navigation {
+  display: flex;
+  align-items: center;
+
+
+
+}
+
+.catalog-sub-navigation:hover {
+  .sub-menu-list-catalog {
+    display: block;
+
+  }
+}
+
+.menu-list {
+  display: flex;
+
+  li {
+    position: relative;
+
+
+    a {
+      padding: 10px;
+      margin: 20px;
+      font-size: $font-size-20;
+      border-radius: 10px;
+      color: $Nav;
+      transition: .3s;
+      position: relative;
+
+
+      & {
+        @extend %hoverColorBlack
+      }
+
+    }
+  }
+
+}
+
+
+.sub-menu-list-catalog {
+  width: 100%;
+  min-height: 200px;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 75px;
+  background-color: $backgroundSubMenu;
+
+  p {
+    padding: 5px;
+    margin: 5px;
+    color: $red;
+    font-weight: bold;
+    font-size: $font-size-20;
+  }
+
+
+  li {
+
+
+    a {
+      color: white;
+      padding: 5px;
+      margin: 5px;
+
+
+      & {
+        @extend %hoverColorRed
+      }
+    }
+  }
+}
+
+.menu-arrow {
+  position: absolute;
+  bottom: 15px;
+  cursor: pointer;
+  border-top: 8px solid $Nav;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+
+
+}
+
+.burger-menu {
+  width: 40px;
+  height: 30px;
+  display: none;
+  cursor: pointer;
+
+  span {
+    display: inline-block;
+    background-color: black;
+    width: 35px;
+    height: 4px;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+
+  }
+}
+.sub-menu-list-sale{
+  min-height: 200px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 75px;
+  background-color: $backgroundSubMenu;
+  display: none;
+
+}
+.sale-sub-navigation:hover{
+   .sub-menu-list-sale{
+      display: block;
+   }
+}
+
+
