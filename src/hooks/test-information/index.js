@@ -26,7 +26,9 @@ const useInformation = () => {
             Color: "Black",
             ProductType: "Lighting",
             Vendor: "China",
-            Weight: " 2.0 kg"
+            Weight: " 2.0 kg",
+            description: "Our industry made a great number of legendary cars, and this is a true argument that it is essential part of our life.So, if you like listening to the sound of your engine, or if you like the smell of burning rubber of your wheels, you are in the right place. Even if you don’t like speed and power, racing and all this stuff, but you love your car, you are still in the right place because you might be interested in professional spare parts.The secret of our success is that our goods are an unbeaten combination of high quality and fair price. Nowadays car is not just a vehicle, it is a part of you, it influences your style and your character. " +
+                "Have you ever noticed that we often try to talk to the car as if it was a human?",
 
         },
         {
@@ -36,7 +38,9 @@ const useInformation = () => {
             Color: "Black",
             ProductType: "Lighting",
             Vendor: "China",
-            Weight: " 2.0 kg"
+            Weight: " 2.0 kg",
+            description: "Our industry made a great number of legendary cars, and this is a true argument that it is essential part of our life.So, if you like listening to the sound of your engine, or if you like the smell of burning rubber of your wheels, you are in the right place. Even if you don’t like speed and power, racing and all this stuff, but you love your car, you are still in the right place because you might be interested in professional spare parts.The secret of our success is that our goods are an unbeaten combination of high quality and fair price. Nowadays car is not just a vehicle, it is a part of you, it influences your style and your character. " +
+                "Have you ever noticed that we often try to talk to the car as if it was a human?",
 
         },
         {
@@ -46,7 +50,9 @@ const useInformation = () => {
             Color: "Black",
             ProductType: "Lighting",
             Vendor: "China",
-            Weight: " 2.0 kg"
+            Weight: " 2.0 kg",
+            description: "Our industry made a great number of legendary cars, and this is a true argument that it is essential part of our life.So, if you like listening to the sound of your engine, or if you like the smell of burning rubber of your wheels, you are in the right place. Even if you don’t like speed and power, racing and all this stuff, but you love your car, you are still in the right place because you might be interested in professional spare parts.The secret of our success is that our goods are an unbeaten combination of high quality and fair price. Nowadays car is not just a vehicle, it is a part of you, it influences your style and your character. " +
+                "Have you ever noticed that we often try to talk to the car as if it was a human?",
 
         },
         {
@@ -56,7 +62,9 @@ const useInformation = () => {
             Color: "Black",
             ProductType: "Lighting",
             Vendor: "China",
-            Weight: " 2.0 kg"
+            Weight: " 2.0 kg",
+            description: "Our industry made a great number of legendary cars, and this is a true argument that it is essential part of our life.So, if you like listening to the sound of your engine, or if you like the smell of burning rubber of your wheels, you are in the right place. Even if you don’t like speed and power, racing and all this stuff, but you love your car, you are still in the right place because you might be interested in professional spare parts.The secret of our success is that our goods are an unbeaten combination of high quality and fair price. Nowadays car is not just a vehicle, it is a part of you, it influences your style and your character. " +
+                "Have you ever noticed that we often try to talk to the car as if it was a human?",
 
         },
         {
@@ -66,7 +74,9 @@ const useInformation = () => {
             Color: "Black",
             ProductType: "Lighting",
             Vendor: "China",
-            Weight: " 2.0 kg"
+            Weight: " 2.0 kg",
+            description: "Our industry made a great number of legendary cars, and this is a true argument that it is essential part of our life.So, if you like listening to the sound of your engine, or if you like the smell of burning rubber of your wheels, you are in the right place. Even if you don’t like speed and power, racing and all this stuff, but you love your car, you are still in the right place because you might be interested in professional spare parts.The secret of our success is that our goods are an unbeaten combination of high quality and fair price. Nowadays car is not just a vehicle, it is a part of you, it influences your style and your character. " +
+                "Have you ever noticed that we often try to talk to the car as if it was a human?",
 
         },
         {
@@ -76,7 +86,9 @@ const useInformation = () => {
             Color: "Black",
             ProductType: "Lighting",
             Vendor: "China",
-            Weight: " 2.0 kg"
+            Weight: " 2.0 kg",
+            description: "Our industry made a great number of legendary cars, and this is a true argument that it is essential part of our life.So, if you like listening to the sound of your engine, or if you like the smell of burning rubber of your wheels, you are in the right place. Even if you don’t like speed and power, racing and all this stuff, but you love your car, you are still in the right place because you might be interested in professional spare parts.The secret of our success is that our goods are an unbeaten combination of high quality and fair price. Nowadays car is not just a vehicle, it is a part of you, it influences your style and your character. " +
+                "Have you ever noticed that we often try to talk to the car as if it was a human?",
 
         },
         {
@@ -86,7 +98,9 @@ const useInformation = () => {
             Color: "Black",
             ProductType: "Lighting",
             Vendor: "China",
-            Weight: " 2.0 kg"
+            Weight: " 2.0 kg",
+            description: "Our industry made a great number of legendary cars, and this is a true argument that it is essential part of our life.So, if you like listening to the sound of your engine, or if you like the smell of burning rubber of your wheels, you are in the right place. Even if you don’t like speed and power, racing and all this stuff, but you love your car, you are still in the right place because you might be interested in professional spare parts.The secret of our success is that our goods are an unbeaten combination of high quality and fair price. Nowadays car is not just a vehicle, it is a part of you, it influences your style and your character. " +
+                "Have you ever noticed that we often try to talk to the car as if it was a human?",
 
         },
     ]

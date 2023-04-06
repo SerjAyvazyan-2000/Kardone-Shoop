@@ -37,12 +37,13 @@ const Home = () => {
             <section className="featured-section">
                 <div className="G-container">
                     <div className="featured-title"><h3>FEATURED <span>PRODUCTS</span></h3></div>
+                    {featuredProducts.length ?
                     <div className="featured-products">
                         {featuredProducts.length ? featuredProducts.map((item, index) => {
                             return <FeaturedProducts item={item} key={index}/>
                         }) : null}
-
                     </div>
+                        : <div>EMPTY LIST</div>}
                 </div>
             </section>
             <section className="section-about">

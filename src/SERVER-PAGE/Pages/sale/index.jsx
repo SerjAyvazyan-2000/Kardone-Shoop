@@ -1,14 +1,48 @@
 import "./style.scss"
 import Header from "../header";
 import React, {useEffect, useState} from "react";
-import {useLocation} from 'react-router-dom'
+import {NavLink, useLocation} from 'react-router-dom'
+import useInformation from "../../../hooks/test-information";
 
 
 const Sale = () => {
+    const {featuredProducts} = useInformation()
+    const [activeNav, setActiveNav] = useState("")
+    const [activeIcon, setActiveIcon] = useState("")
+
 
     let location = useLocation();
-    const handleClick = () => {
+    const filterProducts = (name) => {
+        if (name === 'all') {
+            setActiveNav("all")
+        }
+        if (name === 'Coupe') {
+            setActiveNav("Coupe")
+        }
+        if (name === 'Hatchback') {
+            setActiveNav("Hatchback")
+        }
+        if (name === 'Sedan') {
+            setActiveNav("Sedan")
+        }
+        if (name === 'Vehicle Body Type') {
+            setActiveNav("Vehicle Body Type")
+        }
+        if (name === 'Wheel Nuts') {
+            setActiveNav("Wheel Nuts")
+        }
+        if (name === 'Year') {
+            setActiveNav("Year")
+        }
 
+    }
+    const handelClick = (name) => {
+        if (name === "text") {
+            setActiveIcon("text")
+        }
+        if (name === "textNone") {
+            setActiveIcon("textNone")
+        }
     }
 
     return <>
@@ -45,15 +79,78 @@ const Sale = () => {
                 </div>
                 <div className="filter-button-box">
                     <ul>
-                        <li onClick={() => handleClick("all")}>All</li>
-                        <li onClick={() => handleClick("Coupe")}>Coupe</li>
-                        <li onClick={() => handleClick("Hatchback")}>Hatchback</li>
-                        <li onClick={() => handleClick("Sedan")}>Sedan</li>
-                        <li onClick={() => handleClick("Vehicle Body Type")}>Vehicle Body Type</li>
-                        <li onClick={() => handleClick("Wheel Nuts")}>Wheel Nuts</li>
-                        <li onClick={() => handleClick("Year")}>Year</li>
+                        <li onClick={() => filterProducts("all")}
+                            className={activeNav === "all" ? "filter-active" : null}>All
+                        </li>
+                        <li onClick={() => filterProducts("Coupe")}
+                            className={activeNav === "Coupe" ? "filter-active" : null}>Coupe
+                        </li>
+                        <li onClick={() => filterProducts("Hatchback")}
+                            className={activeNav === "Hatchback" ? "filter-active" : null}>Hatchback
+                        </li>
+                        <li onClick={() => filterProducts("Sedan")}
+                            className={activeNav === "Sedan" ? "filter-active" : null}>Sedan
+                        </li>
+                        <li onClick={() => filterProducts("Vehicle Body Type")}
+                            className={activeNav === "Vehicle Body Type" ? "filter-active" : null}>Vehicle Body Type
+                        </li>
+                        <li onClick={() => filterProducts("Wheel Nuts")}
+                            className={activeNav === "Wheel Nuts" ? "filter-active" : null}>Wheel Nuts
+                        </li>
+                        <li onClick={() => filterProducts("Year")}
+                            className={activeNav === "Year" ? "filter-active" : null}>Year
+                        </li>
                     </ul>
                 </div>
+                <div className="sort-desqription-products">
+                    <div className="control-description">
+                        <span onClick={() => handelClick("text")}
+                              className={`icon-list2 ${activeIcon === "text" ? "text-active" : null}`}></span>
+                        <span onClick={() => handelClick("textNone")}
+                              className={`icon-list2 ${activeIcon === "textNone" ? "text-active" : null}`}></span>
+                    </div>
+
+                    <div className="sort-products">
+                        <div className="select-show">
+                            <span>Show</span><select name="" id="">
+                            <option value="">4</option>
+                            <option value="">6</option>
+                            <option value="">8</option>
+                            <option value="">10</option>
+                        </select>
+                        </div>
+                        <div className="select-sort">
+                            <select name="" id="">
+                                <option value="">Featured</option>
+                                <option value="">Best Selling</option>
+                                <option value="">Name: A – Z</option>
+                                <option value="">Name: Z – A</option>
+                                <option value="">Price: low to high</option>
+                                <option value="">Price: high to low</option>
+                                <option value="">Oldest to newest</option>
+                                <option value="">Newest to oldest</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {featuredProducts.length ?
+                    <div className="sale-products-list">
+                        {featuredProducts.map((item, index) => {
+                            return <div className="sale-products-item ">
+                                <div className="item-products-image G-image" style={{backgroundImage: `url(${item.img})`}}></div>
+                                <div className="item-products-info">
+                                    <p>{item.name}</p>
+                                    <p>{item.prise}$</p>
+                                    <button>Add To Cart <span className="icon-cart"></span></button>
+                                </div>
+
+
+                            </div>
+                        })}
+                    </div>
+
+
+                    : <div>Empty list</div>}
             </div>
 
         </section>

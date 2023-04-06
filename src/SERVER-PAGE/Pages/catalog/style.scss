@@ -25,8 +25,11 @@
 .catalog-pages {
   padding: 10px 0 0 0;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
+
+
 }
 
 .catalog-item {
@@ -38,6 +41,10 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  @media screen and (max-width: 589px) {
+    width: 100%;
+
+  }
 }
 
 .catalog-tem-bg {

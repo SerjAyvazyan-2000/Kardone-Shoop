@@ -2,29 +2,12 @@ import "./stle.scss"
 import logo from "../../../assets/style/images/logo.png"
 import React, {useState} from "react";
 import {Link, NavLink, Outlet} from "react-router-dom";
+import useInformation from "../../../hooks/test-information";
 
-// export function Layout() {
-//     return <div>
-//
-//         <nav>
-//             <ul>
-//                 <li>
-//                     <Link to="/">Home</Link>
-//                 </li>
-//                 <li>
-//                     <Link to="/catalog">catalog</Link>
-//                 </li>
-//                 <li>
-//                     <Link to="/sale">sale</Link>
-//                 </li>
-//             </ul>
-//         </nav>
-//
-//         <Outlet/>
-//     </div>
-// }
 
 const Header = () => {
+    const {catalog} = useInformation()
+
     const [subMenu, setSubMenu] = useState(false)
     const openSubMenu = () => {
         setSubMenu(!subMenu)
@@ -86,24 +69,19 @@ const Header = () => {
                                 <NavLink to="/catalog">Catalog
                                     <span onClick={openSubMenu} className="menu-arrow"></span>
                                 </NavLink>
-                                <ul className={"sub-menu-list-catalog"}>
-                                    <p>Catalog</p>
-                                    <li>
-                                        <NavLink to="/catalog"> Body Parts</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to="/catalog">Exterior</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to="/catalog">Interior</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to="/catalog">Lighting</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink to="/catalog">Sale</NavLink>
-                                    </li>
-                                </ul>
+                                {catalog.length ?
+                                    <ul className={"sub-menu-list-catalog"}>
+                                        <p>Catalog</p>
+                                        {catalog.map((item, index) => {
+                                            return <li>
+                                                <NavLink
+                                                    to="/sale"
+                                                    state={{name: item.name, description: item.description}}
+                                                >{item.name}</NavLink>
+                                            </li>
+                                        })}
+                                    </ul>
+                                    : null}
                             </li>
                             <li className="sale-sub-navigation">
                                 <NavLink to="/sale">Sale
