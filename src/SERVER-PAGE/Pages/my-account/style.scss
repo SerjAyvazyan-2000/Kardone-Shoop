@@ -1,6 +1,29 @@
 @import "../../../assets/style/variables";
 @import "src/assets/style/shablon";
 .MyAccount-section{
-   padding: 150px 0 0 0 ;
+   padding: 140px 0 0 0 ;
 
+}
+
+.my-account-header{
+   background-color: $antiquewhite;
+   padding: $paddingPagesHeader;
+}
+.my-account-header-text{
+   letter-spacing: $letterSpacing;
+
+   i{
+       font-size: $iconRow;
+   }
+   span{
+       color: $Nav;
+   }
+}
+.my-account-title{
+  padding: $paddingPagesTitle;
+  border-bottom: 1px solid;
+}
+.form-container{
+   display: flex;
+  justify-content: space-between;
 }

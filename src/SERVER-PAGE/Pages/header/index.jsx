@@ -7,10 +7,14 @@ import useInformation from "../../../hooks/test-information";
 
 const Header = () => {
     const {catalog} = useInformation()
+    const [openMenu,setOpenMenu] = useState(false)
 
     const [subMenu, setSubMenu] = useState(false)
     const openSubMenu = () => {
         setSubMenu(!subMenu)
+    }
+    const burgerMenu = () =>{
+        setOpenMenu(!openMenu)
     }
 
     return <header className="header-section">
@@ -60,7 +64,7 @@ const Header = () => {
                             </div>
                         </NavLink>
                     </div>
-                    <nav className="header-menu">
+                    <nav className={` ${openMenu ? "fixed-menu": "header-menu"}`}>
                         <ul className="menu-list">
                             <li>
                                 <NavLink to="/home">Home</NavLink>
@@ -104,7 +108,7 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    <div className="burger-menu">
+                    <div onClick={burgerMenu} className="burger-menu">
                         <span></span>
                         <span></span>
                         <span></span>

@@ -1,7 +1,7 @@
 import "./style.scss"
 import Header from "../header";
 import React, {useEffect, useState} from "react";
-import {NavLink, useLocation} from 'react-router-dom'
+import {Link, NavLink, useLocation} from 'react-router-dom'
 import useInformation from "../../../hooks/test-information";
 
 
@@ -51,10 +51,10 @@ const Sale = () => {
             <div className="sale-header">
                 <div className="G-container">
                     <div className="sale-header-text">
-                        <h3>HOME<i className="icon-arrow-right"></i> COLLECTIONS <i
+                        <h4>HOME<i className="icon-arrow-right"></i> COLLECTIONS <i
                             className="icon-arrow-right"></i><span>
                             {!location.state ? "Exterior" : location.state.name}
-                        </span></h3>
+                        </span></h4>
                     </div>
                 </div>
 
@@ -109,7 +109,6 @@ const Sale = () => {
                         <span onClick={() => handelClick("textNone")}
                               className={`icon-list2 ${activeIcon === "textNone" ? "text-active" : null}`}></span>
                     </div>
-
                     <div className="sort-products">
                         <div className="select-show">
                             <span>Show</span><select name="" id="">
@@ -137,7 +136,12 @@ const Sale = () => {
                     <div className="sale-products-list">
                         {featuredProducts.map((item, index) => {
                             return <div className="sale-products-item ">
-                                <div className="item-products-image G-image" style={{backgroundImage: `url(${item.img})`}}></div>
+                                <Link to={`/product/${item.id}`}
+                                      state={{name: item.name, categories: item.categories}}
+                                      className="item-products-image G-image"
+                                      style={{backgroundImage: `url(${item.img})`}}>
+
+                                </Link>
                                 <div className="item-products-info">
                                     <p>{item.name}</p>
                                     <p>{item.prise}$</p>

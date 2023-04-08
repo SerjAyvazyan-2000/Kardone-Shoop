@@ -24,11 +24,13 @@ const Home = () => {
             <section className="slider-block">
                 <Slider {...settings}>
                     {homeSliderInfo.length ? homeSliderInfo.map((item, index) => {
-                            return <SliderSection
-                                item={item}
-                                key={index}
-                                buttonName="Read More"
-                            />
+                            return <div>
+                                <SliderSection
+                                    item={item}
+                                    key={index}
+                                    buttonName="Read More"
+                                />
+                            </div>
                         })
                         : null}
                 </Slider>

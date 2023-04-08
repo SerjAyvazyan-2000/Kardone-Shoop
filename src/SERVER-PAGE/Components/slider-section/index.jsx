@@ -3,9 +3,7 @@ import {NavLink} from "react-router-dom";
 
 const SliderSection = ({item,buttonName}) => {
 
-    return <div>
-        <div className="slider-image">
-            <img src={item.img} alt=""/>
+    return<div className="slider-image G-image" style={{backgroundImage:`url(${item.img})`}}>
             <div className="slider-title">
                 <p>{item.title}</p>
                 <h3>{item.description}</h3>
@@ -14,7 +12,6 @@ const SliderSection = ({item,buttonName}) => {
                     {buttonName}
                 </NavLink>
             </div>
-        </div>
     </div>
 }
 export default SliderSection

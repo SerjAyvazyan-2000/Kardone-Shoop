@@ -11,14 +11,18 @@
 }
 
 .sale-header-text {
-  letter-spacing: 2px;
+  letter-spacing:$letterSpacing;
 
   i {
-    font-size: 15px;
+    font-size: $iconRow;
+    color: $Nav;
   }
 
   span {
     color: $Nav;
+  }
+  h4 > :not(:last-child){
+    margin: 5px;
   }
 }
 
@@ -100,6 +104,8 @@
 .sort-desqription-products {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .sort-products {
@@ -111,17 +117,19 @@
 }
 
 .sale-products-list {
-  display: flex;
+  margin-top: 20px;
   justify-content: center;
+  display: flex;
   flex-wrap: wrap;
   gap: 20px;
+
 }
 
 .sale-products-item {
-  margin-top: 20px;
-  padding: 10px;
   width: 300px;
   height: 400px;
+
+
 
   button {
     border: 1px solid;
@@ -142,6 +150,7 @@
 
 
   }
+
 }
 
 .item-products-image {
