@@ -3,6 +3,7 @@ import Header from "../header";
 import React, {useEffect, useState} from "react";
 import {Link, NavLink, useLocation} from 'react-router-dom'
 import useInformation from "../../../hooks/test-information";
+import ScrollTop from "../../Components/scrollTop";
 
 
 const Sale = () => {
@@ -158,6 +159,7 @@ const Sale = () => {
             </div>
 
         </section>
+        <ScrollTop/>
     </>
 }
 export default Sale

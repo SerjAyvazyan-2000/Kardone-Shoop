@@ -1,29 +1,325 @@
 @import "../../../assets/style/variables";
 @import "src/assets/style/shablon";
-.MyAccount-section{
-   padding: 140px 0 0 0 ;
+
+.MyAccount-section {
+  padding: 140px 0 0 0;
+
+  h3 {
+    font-weight: 400;
+  }
 
 }
 
-.my-account-header{
-   background-color: $antiquewhite;
-   padding: $paddingPagesHeader;
+.my-account-header {
+  background-color: $antiquewhite;
+  padding: $paddingPagesHeader;
 }
-.my-account-header-text{
-   letter-spacing: $letterSpacing;
 
-   i{
-       font-size: $iconRow;
-   }
-   span{
-       color: $Nav;
-   }
+.my-account-header-text {
+  letter-spacing: $letterSpacing;
+
+  i {
+    font-size: $iconRow;
+  }
+
+  span {
+    color: $Nav;
+  }
 }
-.my-account-title{
+
+.my-account-title {
   padding: $paddingPagesTitle;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid $Nav;
 }
-.form-container{
-   display: flex;
+
+.form-container {
+  display: flex;
   justify-content: space-between;
+  margin-top: 20px;
+  position: relative;
+  transition: .3s;
+
+
+  button {
+    background-color: black;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: .3s;
+    color: white;
+
+
+    & {
+      @extend %hoverBgColorRed
+    }
+  }
+
+  @media screen and (max-width: 616px) {
+    flex-direction: column;
+  }
+}
+
+
+.create-account-box {
+  border: 1px solid $Nav;
+  border-top: 2px solid red;
+  width: 49%;
+  min-height: 300px;
+
+  @media screen and (max-width: 616px) {
+    width: 100%;
+  }
+}
+
+.create-account-box-info {
+
+  i {
+    margin: 0 5px 0 0;
+  }
+}
+
+.create-account-box-info > :not(:last-child) {
+  margin: 10px 0 10px 0;
+}
+
+.create-account-box > :not(:last-child) {
+  margin: 20px 0 20px 0;
+}
+
+.create-account-box, .login-account-box {
+  padding: $paddingPagesMyAccount;
+
+
+  h4 {
+    font-weight: 300;
+  }
+}
+
+.login-account-box > :not(:last-child) {
+  margin: 20px 0 20px 0;
+}
+
+.login-account-box {
+  border: 1px solid $Nav;
+  border-top: 2px solid red;
+  width: 49%;
+
+  @media screen and (max-width: 616px) {
+    width: 100%;
+  }
+}
+
+
+.form-errorText {
+  color: red;
+}
+
+.forgot-password {
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+.registration-block {
+  background-color: white;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  border: 1px solid;
+  border-top: 2px solid red;
+}
+
+.register-title-block {
+  display: flex;
+  justify-content: space-between;
+  padding: $paddingPagesMyAccount;
+
+
+}
+
+.register-close-tools {
+  cursor: pointer;
+
+  i {
+    font-size: $iconRow;
+    margin: 0 5px;
+  }
+
+  &:hover {
+    color: $red;
+  }
+}
+
+.register-tools-block {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media screen and (max-width: 1041px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 705px) {
+    width: 100%;
+  }
+
+
+}
+
+.register-input-block {
+  width: 60%;
+  padding: 0 0 20px;
+  display: flex;
+  gap: 20px;
+
+  @media screen and (max-width: 573px) {
+    flex-wrap: wrap;
+  }
+
+}
+
+.register-input-name {
+  min-width: 120px;
+}
+
+.register-input-tools {
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 5px 0;
+    transition: .3s;
+    border: 1px solid;
+    border-radius: 5px;
+
+
+    &:focus {
+      border: 2px solid $Nav;
+    }
+  }
+}
+
+.register-save-tools {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  p {
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      color: $red;
+    }
+  }
+}
+
+.forgot-password-box {
+  padding: $paddingPagesMyAccount;
+  display: none;
+
+}
+
+.forgot-password-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forgot-password-description {
+  margin-top: 10px;
+  color: $Nav;
+}
+
+.forgot-password-close {
+  cursor: pointer;
+
+  i {
+    font-size: $iconRow;
+    margin: 0 5px;
+  }
+
+  &:hover {
+    color: $red;
+  }
+}
+
+.forgot-password-email {
+  padding: 20px 0 0 0;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media screen and (max-width: 1040px) {
+    width: 100%;
+  }
+
+}
+
+.forgot-input-block {
+  width: 70%;
+  display: flex;
+  @media screen and (max-width: 616px) {
+    flex-wrap: wrap;
+  }
+
+}
+
+.forgot-input-name {
+  min-width: 120px;
+}
+
+.forgot-input-tools {
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 5px 0;
+    transition: .3s;
+    border: 1px solid;
+    border-radius: 5px;
+
+
+    &:focus {
+      border: 2px solid $Nav;
+    }
+  }
+}
+
+.forgot-input-save {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  button {
+    background-color: black;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: .3s;
+    color: white;
+
+
+    & {
+      @extend %hoverBgColorRed
+    }
+  }
+
+  p {
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+      color: $red;
+    }
+  }
+
 }

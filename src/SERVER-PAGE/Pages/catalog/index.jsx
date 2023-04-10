@@ -53,6 +53,7 @@ const Catalog = () => {
             </div>
 
         </section>
+        <ScrollTop/>
     </>
 }
 export default Catalog
