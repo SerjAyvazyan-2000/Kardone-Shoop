@@ -8,6 +8,7 @@ import Basket from "./Pages/basket";
 import Footer from "./Pages/footer";
 import {Routes, Route, Outlet, Link} from "react-router-dom";
 import Products from "./Pages/products";
+import Checkout from "./Pages/checkout";
 
 
 const ServerPage = () => {
@@ -22,8 +23,7 @@ const ServerPage = () => {
             <Route path="my-account" element={<MyAccount/>}/>
             <Route path="basket" element={<Basket/>}/>
             <Route path="/product/:id" element={<Products/>}/>
-
-
+            <Route path={'/checkout'} element={<Checkout/>}/>
         </Routes>
         <Footer/>
     </div>

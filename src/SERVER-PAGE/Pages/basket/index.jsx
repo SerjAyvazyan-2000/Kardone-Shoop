@@ -93,6 +93,28 @@ const Basket = () => {
                     </div>
 
                 }
+                 <div className="total-weight-box">
+                      <div className="total-weight-text"><p>Total weight</p></div>
+                     <div className="total-wight-number"><p>22.0 lb</p></div>
+                 </div>
+                <div className="total-prise-box">
+                    <div className="total-prise-text"><p>Total Prise</p></div>
+                    <div className="total-prise-number"><span>$40000</span></div>
+                </div>
+                <div className="message-tools-box">
+                    <div className="message-tools-text">Add a note to your order</div>
+                     <div className="message-tools-textarea">
+                         <textarea></textarea>
+                     </div>
+                </div>
+                <div className="kardone-process">
+                     <p>KARDONE process all orders in USD. Shipping & taxes calculated at checkout.</p>
+                </div>
+
+                <div className="shopp-checkout-box">
+                     <div className="continue-shoop-tools"><NavLink>Continue Shopping</NavLink></div>
+                    <div className="proceed-checkout"><NavLink to={"/checkout"}>Proceed Checkout</NavLink></div>
+                </div>
             </div>
 
         </section>

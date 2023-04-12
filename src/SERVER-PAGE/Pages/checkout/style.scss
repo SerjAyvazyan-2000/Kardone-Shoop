@@ -1,0 +1,271 @@
+@import "src/assets/style/shablon";
+@import "../../../assets/style/variables";
+
+.checkout-section {
+  display: flex;
+
+  @media screen and (max-width: 761px){
+     flex-direction: column;
+  }
+
+}
+
+.checkout-users-info-box {
+  width: 50%;
+  padding: 10px  20px ;
+
+  @media screen and (max-width: 761px){
+    width: 100%;
+  }
+}
+
+.checkout-product-box {
+  width: 50%;
+  padding: 10px  20px ;
+  background: $antiquewhite;
+
+  @media screen and (max-width: 761px){
+    width: 100%;
+  }
+
+}
+
+.checkout-users-header > :not(:last-child) {
+  margin: 0 0 15px;
+}
+
+.checkout-users-text-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  i {
+    margin: 0 5px 10px 10px;
+    color: $Nav;
+
+  }
+
+  span,a {
+     margin: 0 0 10px;
+  }
+}
+
+.login-contact-info {
+  h3 {
+    font-weight: 300;
+  }
+
+  a {
+    text-decoration: underline;
+    color: $blueCheckout;
+    transition: .3s;
+
+    &:hover {
+      color: $blueCheckoutHover;
+
+    }
+  }
+}
+
+.shipping-address-title {
+  h3 {
+    font-weight: 300;
+  }
+}
+
+.shipping-info-box > :not(:last-child) {
+  margin: 0 0 25px;
+}
+
+.shipping-info-box {
+  input[type = "text"] {
+    border: 1px solid $Nav;
+    width: 100%;
+    padding: 10px 0 10px 10px;
+    transition: .3s;
+    border-radius: 10px;
+
+    &:focus-visible {
+      border-color: $blueCheckout;
+    }
+
+  }
+
+  input[type = "checkbox"] {
+    margin: 0 10px 0 0;
+  }
+}
+
+.checkout-contact-information > :not(:last-child) {
+  margin: 0 0 15px;
+}
+
+.contact-input-box > :not(:last-child) {
+  margin: 0 0 10px;
+}
+
+
+.shipping-form-box > :not(:last-child) {
+  margin: 0 0 15px;
+}
+
+.city-box > :not(:last-child) {
+  margin: 0 0 10px;
+}
+
+.shipping-address-title {
+  margin: 0 0 15px;
+
+}
+
+
+.login-contact-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  p,h3{
+    padding: 0  10px 0 0  ;
+  }
+
+}
+
+.contact-input-box {
+  label {
+    display: flex;
+    align-items: center;
+  }
+
+  input[type = "text"] {
+    width: 100%;
+    border: 1px solid $Nav;
+  }
+
+}
+
+.input-box-select {
+  width: 100%;
+
+
+}
+
+.firstname-lastname-box {
+  display: flex;
+  justify-content: space-between;
+
+  label {
+    width: 45%;
+
+    input {
+      border: 1px solid $Nav;
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 725px){
+   flex-direction: column;
+    gap: 20px;
+    label{
+       width: 100%;
+    }
+  }
+
+}
+
+
+.shipping-address-box, .apartment-box, city-box {
+  input[type = "text"] {
+    border: 1px solid $Nav;
+    width: 100%;
+  }
+
+  label{
+    display: flex;
+    align-items: center;
+  }
+}
+
+.form-save-close-tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    padding: 20px;
+    background-color: $blueCheckout;
+    border-radius: 10px;
+    transition: .3s;
+
+    &:hover {
+      background-color: $blueCheckoutHover;
+    }
+  }
+
+  a {
+    color: $blueCheckout;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+
+
+    i {
+      margin: 0 5px 0 0;
+    }
+
+    &:hover {
+      color: $blueCheckoutHover;
+    }
+  }
+
+  @media screen and (max-width: 725px){
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.checkout-footer {
+  padding: 10px 0 0 0;
+  border-top: 1px solid $Nav;
+
+  p {
+    color: $Nav;
+  }
+}
+.basket-products > :not(:last-child){
+   margin: 0 0 20px;
+}
+.basket-products-item{
+   display: flex;
+  align-items: center;
+  gap: 20px;
+
+  @media screen and (max-width:408px){
+     flex-direction: column;
+  }
+}
+.basket-products-item-name{
+   p{
+     margin: 0 0 10px;
+   }
+}
+.basket-products-item-image{
+   width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  background-color: white;
+
+  @media screen and (max-width: 1006px){
+    width: 200px;
+
+  }
+}
+.subtotal-box,.shipping-box,.total-box{
+   display: flex;
+  justify-content: space-between;
+}
+.total-box{
+  span{
+     font-weight: bold;
+  }
+}

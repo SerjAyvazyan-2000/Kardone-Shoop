@@ -20,7 +20,6 @@ const Counter = () => {
             <p>{count}</p>
             <span onClick={handleClickMinus} className="icon-minus"></span>
         </div>
-        <button>Update</button>
     </div>
 }
 export default Counter
