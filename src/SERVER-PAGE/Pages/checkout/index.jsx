@@ -1,11 +1,25 @@
 import "./style.scss"
-import React from "react";
+import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import useInformation from "../../../hooks/test-information";
+import Payment from "./payment";
 
 
 const Checkout = () => {
     const {featuredProducts} = useInformation()
+    const [openPayment, setOpenPayment] = useState(false)
+
+    const continueShipping = (playNow) => {
+        if(playNow !== "Play Now"){
+            setOpenPayment(!openPayment)
+        }
+    }
+    const returnInformation = (name) => {
+       if(name === "Return to information"){
+            setOpenPayment(false)
+       }
+
+    }
 
     return <div className="checkout-section">
         <div className="checkout-users-info-box">
@@ -14,74 +28,90 @@ const Checkout = () => {
                     <div className="checkout-users-header">
                         <div className="checkout-users-title"><h2>Kardone</h2></div>
                         <div className="checkout-users-text-title">
-                            <NavLink to={"/basket"} style={{color:'#0acece'}}>Cart</NavLink><i className="icon-arrow-right"></i><span>Information</span><i
-                            className="icon-arrow-right"></i><span>Shipping</span><i
-                            className="icon-arrow-right"></i><span>Payment</span>
+                            <NavLink to={"/basket"} style={{color: '#0acece'}}>Cart</NavLink><i
+                            className="icon-arrow-right"></i><span onClick={()=>returnInformation("Return to information")}>Information</span>
+                            <i className="icon-arrow-right"></i><span>Payment</span>
                         </div>
                     </div>
-                    <div className="checkout-contact-information">
-                        <div className="login-contact-info">
-                            <h3>Contact information</h3>
-                            <p>Already have an account?<NavLink to="/my-account">Log in</NavLink></p>
-                        </div>
-                        <div className="contact-input-box">
-                            <label htmlFor="">
-                                <input type="text" placeholder="Email or mobile phone number"/>
-                            </label>
-                            <label htmlFor="">
-                                <input type="checkbox"/><span>Email me with news and offers</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div className="shipping-address-box">
-                        <div className="shipping-address-title">
-                            <h3>Shipping address</h3>
-                        </div>
-                        <form action="" className="shipping-form-box">
-                            <div className="input-box-select">
-                                <input type="text" list="cars" placeholder="Select"/>
-                                <datalist id="cars">
-                                    <option>Volvo</option>
-                                    <option>Saab</option>
-                                    <option>Mercedes</option>
-                                    <option>Audi</option>
-                                </datalist>
-
-                            </div>
-                            <div className="firstname-lastname-box">
-                                <label htmlFor="">
-                                    <input type="text" placeholder="firstanem"/>
-                                </label>
-                                <label htmlFor="">
-                                    <input type="text" placeholder="lastname"/>
-                                </label>
+                    {!openPayment ?
+                        <>
+                            <div className="checkout-contact-information">
+                                <div className="login-contact-info">
+                                    <h3>Contact information</h3>
+                                    <p>Already have an account?<NavLink to="/my-account">Log in</NavLink></p>
+                                </div>
+                                <div className="contact-input-box">
+                                    <label htmlFor="">
+                                        <input type="text" placeholder="Email or mobile phone number"/>
+                                    </label>
+                                    <label htmlFor="">
+                                        <input type="checkbox"/><span>Email me with news and offers</span>
+                                    </label>
+                                </div>
                             </div>
                             <div className="shipping-address-box">
-                                <label htmlFor="">
-                                    <input type="text" placeholder="Address"/>
-                                </label>
-                            </div>
+                                <div className="shipping-address-title">
+                                    <h3>Shipping address</h3>
+                                </div>
+                                <form action="" className="shipping-form-box">
+                                    <div className="input-box-select">
+                                        <input type="text" list="cars" placeholder="Select"/>
+                                        <datalist id="cars">
+                                            <option>Volvo</option>
+                                            <option>Saab</option>
+                                            <option>Mercedes</option>
+                                            <option>Audi</option>
+                                        </datalist>
 
-                            <div className="apartment-box">
-                                <label htmlFor="">
-                                    <input type="text" placeholder="Apartment, suite, etc. (optional)"/>
-                                </label>
-                            </div>
-                            <div className="city-box">
-                                <label htmlFor="">
-                                    <input type="text" placeholder="City"/>
-                                </label>
-                                <label htmlFor="">
-                                    <input type="checkbox"/><span>Email me with news and offers</span>
-                                </label>
-                            </div>
+                                    </div>
+                                    <div className="firstname-lastname-box">
+                                        <label htmlFor="">
+                                            <input type="text" placeholder="firstanem"/>
+                                        </label>
+                                        <label htmlFor="">
+                                            <input type="text" placeholder="lastname"/>
+                                        </label>
+                                    </div>
+                                    <div className="shipping-address-box">
+                                        <label htmlFor="">
+                                            <input type="text" placeholder="Address"/>
+                                        </label>
+                                    </div>
 
-                        </form>
+                                    <div className="apartment-box">
+                                        <label htmlFor="">
+                                            <input type="text" placeholder="Apartment, suite, etc. (optional)"/>
+                                        </label>
+                                    </div>
+                                    <div className="city-box">
+                                        <label htmlFor="">
+                                            <input type="text" placeholder="City"/>
+                                        </label>
+                                        <label htmlFor="">
+                                            <input type="checkbox"/><span>Email me with news and offers</span>
+                                        </label>
+                                    </div>
 
-                    </div>
+                                </form>
+
+                            </div>
+                        </>
+
+                        : <Payment
+                            setOpenPayment ={setOpenPayment}
+                            contact={"ayvazyanserj3@gmail.com"}
+                            billing={"davtyan, Erevan, Armenia"}
+                        />}
+
                     <div className="form-save-close-tools">
-                        <NavLink to={"/basket"}><i className="icon-arrow-left"></i>Return to cart</NavLink>
-                        <button>Continue to shipping</button>
+                        <NavLink onClick={() => returnInformation(openPayment ? "Return to information" : null)}
+                                 to={`${!openPayment ? "/basket" : "/checkout"} `}><i
+                            className="icon-arrow-left"></i>{!openPayment ? "Return to cart" : "Return to information"}
+                        </NavLink>
+                        <button
+                            onClick={()=>continueShipping(openPayment ? "Play Now" : "Continue to shipping")}>
+                            {!openPayment ? "Continue to shipping" : "Play Now"}
+                        </button>
                     </div>
                     <div className="checkout-footer">
                         <p>All rights reserved Kardone</p>

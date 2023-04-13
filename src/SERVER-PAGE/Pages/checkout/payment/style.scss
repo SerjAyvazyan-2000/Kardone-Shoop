@@ -1,0 +1,72 @@
+@import "src/assets/style/shablon";
+@import "../../../../assets/style/variables";
+
+.contact-billing-box {
+  padding: 10px;
+  border: 1px solid $Nav;
+  border-radius: 10px;
+  margin: 0 0 25px;
+
+}
+
+.payment-contact-box, .payment-billing-box {
+  padding: 10px 0 10px 0 ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  span {
+    text-decoration: underline;
+    color: $blueCheckout;
+    cursor: pointer;
+  }
+  h4{
+     color: $Nav;
+  }
+}
+.payment-cart-box{
+   background: $antiquewhite;
+  padding: 10px;
+  border-radius: 10px;
+
+  h3{
+     font-weight: 500;
+  }
+}
+.payment-billing-box {
+  border-top: 1px solid $Nav;
+
+}
+.payment-cart-box > :not(:last-child){
+  margin: 0 0 10px;
+}
+.card-number{
+   padding: 10px 0 0 0;
+}
+.cart-title{
+   padding: 20px;
+  border: 1px solid $blueCheckout;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+}
+.expiry-security-box{
+   display: flex;
+  justify-content: space-between;
+
+  @media screen  and (max-width: 516px){
+     flex-direction: column;
+  }
+}
+.expiry-box,.security-box{
+   width: 49%;
+
+  @media screen  and (max-width: 516px){
+    width: 100%;
+    padding: 10px 0 0 0;
+  }
+}
+.cart-tools-box > :not(:last-child){
+   margin: 0 0 15px;
+}

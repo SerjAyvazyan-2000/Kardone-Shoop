@@ -1,4 +1,5 @@
-
+@import "../assets/style/variables";
+@import "src/assets/style/shablon";
 .AdminPage-wrapper{
 
 
@@ -7,7 +8,44 @@
     height: 30px;
   }
 }
-.container-admin{
-   position: relative;
-  width: 100%;
+
+
+.admin-section {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: $white;
+  transition: 0.5s;
+  background: $Nav;
+
+  &.active{
+    width: calc(100% - 60px);
+    left: 60px;
+    .toggle{
+      color: $white;
+    }
+
+    @media screen  and (max-width: 991px){
+      left: 300px;
+    }
+
+  }
+
+  @media screen  and (max-width: 991px){
+    width: 100%;
+    left: 0;
+
+  }
+
 }
+
+
+.scroll-container{
+  height: calc(100vh - 60px);
+  overflow: auto;
+}
+.pord1{
+  height: 10000px;
+}
+

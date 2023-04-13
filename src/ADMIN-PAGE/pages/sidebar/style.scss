@@ -2,7 +2,7 @@
 @import "src/assets/style/shablon";
 
 
-.navigation {
+.sidebar-container {
   position: fixed;
   width: 300px;
   height: 100%;
@@ -20,31 +20,25 @@
     li {
       position: relative;
       width: 100%;
-      border-top-left-radius:30px ;
-      border-bottom-left-radius:30px ;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
 
 
-      &:nth-child(1){
-         margin-bottom: 40px;
-        pointer-events: none;
+      &:hover {
+        background: $white;
       }
-      &:hover{
-        //esel knayes inch
-        //pointer-events: none;
-         background: $white;
-      }
-      a{
-         position: relative;
+
+      a {
+        position: relative;
         width: 100%;
         display: flex;
         align-items: center;
         color: $white;
+        cursor: pointer;
 
-        &:hover{
-           color: $blue;
-
-
-          &::before{
+        &:hover {
+          color: $blue;
+          &::before {
             content: '';
             position: absolute;
             right: 0;
@@ -56,7 +50,7 @@
             box-shadow: 35px 35px 0 10px $white;
             pointer-events: none;
           }
-          &::after{
+          &::after {
             content: '';
             position: absolute;
             right: 0;
@@ -68,17 +62,22 @@
             box-shadow: 35px -35px 0 10px $white;
             pointer-events: none;
           }
-        }
 
+        }
+        &.active{
+       color: aqua;
+
+        }
         .icon {
           position: relative;
           display: block;
           text-align: center;
         }
-        .title{
-            position: relative;
+
+        .title {
+          position: relative;
           display: block;
-          padding: 0 20px;
+          padding: 0  10px 0 20px;
           height: 60px;
           line-height: 60px;
           text-align: start;
@@ -88,7 +87,48 @@
     }
 
   }
-  &.active{
-  width: 60px;
+
+  &.active {
+    width: 60px;
+    @media screen and (max-width: 991px) {
+      left: 0;
+      width: 300px;
+    }
+    @media screen and (max-width: 480px) {
+      left: 0;
+      width: 100%;
+    }
   }
+
+  @media screen and (max-width: 991px) {
+    left: -300px;
+  }
+  @media screen and (max-width: 480px) {
+    left: -100%;
+    width: 100%;
+    z-index: 10;
+  }
+}
+
+.navigation {
+  position: relative;
+}
+
+.sidebar-title {
+  height: 60px;
+  display: flex;
+  align-items: center;
+
+  .title {
+    padding: 0 20px;
+    cursor: pointer;
+  }
+}
+.menu-arrow{
+  position: relative;
+  cursor: pointer;
+  margin-top: 30px;
+  border-top: 8px solid $Nav;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
 }

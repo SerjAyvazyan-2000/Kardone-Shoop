@@ -47,6 +47,12 @@
 
   span,a {
      margin: 0 0 10px;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover{
+       color: $blueCheckoutHover;
+    }
   }
 }
 
