@@ -7,8 +7,8 @@ import AdminPage from "./ADMIN-PAGE";
 function App() {
   return (
     <div className="App">
-        {/*<ServerPage/>*/}
-        <AdminPage/>
+        <ServerPage/>
+        {/*<AdminPage/>*/}
     </div>
   );
 }

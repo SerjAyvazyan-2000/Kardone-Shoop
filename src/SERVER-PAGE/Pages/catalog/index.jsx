@@ -34,7 +34,6 @@ const Catalog = () => {
                                 state={{name: item.name, description: item.description}}
                                 to="/sale"
                                 key={index}
-
                                 className="catalog-item G-image "
                                 style={{backgroundImage: `url(${item.img})`}}>
                                 <div className="catalog-tem-bg"></div>

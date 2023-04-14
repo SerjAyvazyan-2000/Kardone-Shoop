@@ -13,6 +13,7 @@ const Sale = () => {
 
 
     let location = useLocation();
+
     const filterProducts = (name) => {
         if (name === 'all') {
             setActiveNav("all")

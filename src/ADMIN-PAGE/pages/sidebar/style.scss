@@ -11,33 +11,35 @@
   transition: 0.5s;
   overflow: hidden;
 
-  ul {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+  .navigation-list {
 
-    li {
+
+    > li {
       position: relative;
       width: 100%;
-      border-top-left-radius: 30px;
-      border-bottom-left-radius: 30px;
 
 
-      &:hover {
-        background: $white;
-      }
-
-      a {
+      > .navigation-box {
         position: relative;
         width: 100%;
         display: flex;
         align-items: center;
         color: $white;
         cursor: pointer;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
 
         &:hover {
           color: $blue;
+          background: $white;
+
+
+          .menu-arrow {
+            border-top: 8px solid $blue;
+
+          }
+
+
           &::before {
             content: '';
             position: absolute;
@@ -50,6 +52,7 @@
             box-shadow: 35px 35px 0 10px $white;
             pointer-events: none;
           }
+
           &::after {
             content: '';
             position: absolute;
@@ -64,10 +67,23 @@
           }
 
         }
-        &.active{
-       color: aqua;
+
+        &.active {
+          color: aqua;
+
+
+          .menu-arrow {
+            transform: rotate(0deg);
+
+          }
+
+          .sub-menu-bwm {
+            display: block;
+          }
+
 
         }
+
         .icon {
           position: relative;
           display: block;
@@ -77,10 +93,9 @@
         .title {
           position: relative;
           display: block;
-          padding: 0  10px 0 20px;
-          height: 60px;
-          line-height: 60px;
-          text-align: start;
+          padding: 0 40px 0 20px;
+          height: 40px;
+          line-height: 40px;
         }
 
       }
@@ -124,11 +139,42 @@
     cursor: pointer;
   }
 }
-.menu-arrow{
-  position: relative;
+
+.menu-arrow {
+  position: absolute;
   cursor: pointer;
   margin-top: 30px;
-  border-top: 8px solid $Nav;
+  border-top: 8px solid white;
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
+  transform: rotate(90deg);
+  transition: .3s;
+  right: 0;
+  z-index: 20;
+
 }
+
+.navigation-bmw {
+}
+
+.sub-menu-bwm {
+  position: relative;
+
+
+  li{
+    a{
+      display: flex;
+      align-items: center;
+
+    }
+
+    .title {
+      position: relative;
+      display: block;
+      padding: 0 40px 0 20px;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+}
+

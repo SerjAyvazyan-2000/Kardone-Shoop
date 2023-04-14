@@ -8,6 +8,7 @@ import Bmw from "./pages/bmw";
 import Mercedes from "./pages/mersedes";
 import Opel from "./pages/opel";
 import Toyota from "./pages/toyota";
+import AddNewProduct from "./pages/addNewProduct";
 
 const AdminPage = () => {
     const [navActive,setNavActive] = useState(false)
@@ -17,14 +18,18 @@ const AdminPage = () => {
         <div className={`admin-section  ${navActive ? "active" : ''}`}>
             <Header setNavActive={setNavActive} navActive={navActive}/>
             <main className="scroll-container">
-                <Routes>
-                    <Route path={"*"} element={<Dashboard/>}/>
-                    <Route path={"dashboard"} element={<Dashboard/>}/>
-                    <Route path={"bmw"} element={<Bmw/>}/>
-                    <Route path={"mercedes"} element={<Mercedes/>}/>
-                    <Route path={"toyota"} element={<Toyota/>}/>
-                    <Route path={"opel"} element={<Opel/>}/>
-                </Routes>
+                <div className="routing-container">
+                    <Routes>
+                        <Route index path="*" element={<Dashboard/>}/>
+                        <Route path="dashboard" element={<Dashboard/>}/>
+                        <Route path="bmw" element={<Bmw/>}/>
+                        <Route path="mercedes" element={<Mercedes/>}/>
+                        <Route path="toyota" element={<Toyota/>}/>
+                        <Route path="opel" element={<Opel/>}/>
+                        <Route path="addNewProduct" element={<AddNewProduct/>}/>
+                    </Routes>
+                </div>
+
             </main>
         </div>
     </div>

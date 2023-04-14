@@ -7,57 +7,97 @@ import {SiMercedes} from "react-icons/si"
 import {SiToyota} from "react-icons/si"
 import {SiOpel} from "react-icons/si"
 import {GiExitDoor} from "react-icons/gi"
-import {NavLink} from "react-router-dom";
+
 import React from "react";
+import {AiOutlineShoppingCart} from "react-icons/ai"
+import {MdOutlineCollectionsBookmark} from "react-icons/md"
+import {AiOutlineArrowRight} from "react-icons/ai"
+import {Link, NavLink} from "react-router-dom";
+
+
 
 
 const Sidebar = ({navActive}) => {
     return <div className={`sidebar-container ${navActive ? "active" : ''}`}>
-         <div className="sidebar-title">
-             <span className="icon"><GiAutoRepair /></span>
-             <h1 className="title">Kardone</h1>
-         </div>
+        <div className="sidebar-title">
+            <span className="icon"><GiAutoRepair/></span>
+            <h1 className="title">Kardone</h1>
+        </div>
         <nav className="navigation">
-            <ul>
+            <ul className="navigation-list">
                 <li>
-                    <NavLink to={"/dashboard"}  className="navigation-box">
+                    <Link to={"/dashboard"} className="navigation-box">
                         <span className="icon"><AiFillDashboard/></span>
                         <span className="title">Dashboard</span>
-                    </NavLink>
+                    </Link>
+
                 </li>
                 <li>
-                    <NavLink to={"/bmw"}  className="navigation-box">
+                    <Link
+                        state={{name: "name", description: "description"}}
+                        to="/bmw"
+                        className="navigation-box">
                         <span className="icon"><SiBmw/></span>
                         <span className="title">BMW</span>
-                        <span  className="menu-arrow"></span>
-                    </NavLink>
+                        <span className="menu-arrow"></span>
+                    </Link>
+                    <ul className="sub-menu-bwm">
+                        <li>
+                            <NavLink to={"addNewProduct"}>
+                                <span className="icon"><AiOutlineArrowRight/></span>
+                                <span className="title">Add New Product</span>
+                            </NavLink>
+
+                        </li>
+                        <li>
+                            <NavLink>
+                                <span className="icon"><AiOutlineArrowRight/></span>
+                                <span className="title">Product</span>
+                            </NavLink>
+
+                        </li>
+                        <li>
+                            <NavLink>
+                                <span className="icon"><AiOutlineArrowRight/></span>
+                                <span className="title">Collection</span>
+                            </NavLink>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <NavLink to={"/mercedes"} className="navigation-box">
+                    <Link to={"/mercedes"} className="navigation-box">
                         <span className="icon"><SiMercedes/></span>
                         <span className="title">MERCEDES</span>
-                    </NavLink>
+                        <span className="menu-arrow"></span>
+
+                    </Link>
                 </li>
                 <li>
-                    <NavLink to={"/toyota"} className="navigation-box">
+                    <Link to={"/toyota"} className="navigation-box">
                         <span className="icon"><SiToyota/></span>
                         <span className="title">TOYOTA</span>
-                    </NavLink>
+                        <span className="menu-arrow"></span>
+
+                    </Link>
                 </li>
                 <li>
-                    <NavLink to={"/opel"} className="navigation-box">
+                    <Link to={"/opel"} className="navigation-box">
                         <span className="icon"><SiOpel/></span>
                         <span className="title">OPEL</span>
-                    </NavLink>
+                        <span className="menu-arrow"></span>
+
+                    </Link>
                 </li>
                 <li>
-                    <NavLink to={"/signOut"} className="navigation-box">
+                    <Link to={"/signOut"} className="navigation-box">
                         <span className="icon"><GiExitDoor/></span>
                         <span className="title">Sign Out</span>
-                    </NavLink>
+                        <span className="menu-arrow"></span>
+
+                    </Link>
                 </li>
             </ul>
         </nav>
     </div>
 }
-export  default Sidebar
+export default Sidebar
