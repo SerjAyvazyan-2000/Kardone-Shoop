@@ -38,7 +38,7 @@
     transition: .3s;
     color: white;
 
-    &{
+    &:hover{
       @extend %hoverBgColorBlack
 
     }

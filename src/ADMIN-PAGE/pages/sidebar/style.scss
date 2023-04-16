@@ -5,11 +5,23 @@
 .sidebar-container {
   position: fixed;
   width: 300px;
-  height: 100%;
+  left: 0;
+  top: 0;
+  min-height: 100vh;
   background: $blue;
   border-left: 10px solid $blue;
   transition: 0.5s;
   overflow: hidden;
+
+  .navigation {
+    position: relative;
+    height: 100%;
+    overflow: auto;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
+  }
 
   .navigation-list {
 
@@ -29,9 +41,12 @@
         border-top-left-radius: 30px;
         border-bottom-left-radius: 30px;
 
+
+
         &:hover {
           color: $blue;
           background: $white;
+
 
 
           .menu-arrow {
@@ -51,6 +66,7 @@
             border-radius: 50%;
             box-shadow: 35px 35px 0 10px $white;
             pointer-events: none;
+
           }
 
           &::after {
@@ -64,23 +80,13 @@
             border-radius: 50%;
             box-shadow: 35px -35px 0 10px $white;
             pointer-events: none;
+
           }
 
         }
 
         &.active {
           color: aqua;
-
-
-          .menu-arrow {
-            transform: rotate(0deg);
-
-          }
-
-          .sub-menu-bwm {
-            display: block;
-          }
-
 
         }
 
@@ -96,6 +102,8 @@
           padding: 0 40px 0 20px;
           height: 40px;
           line-height: 40px;
+          transition: .3s;
+
         }
 
       }
@@ -105,6 +113,7 @@
 
   &.active {
     width: 60px;
+
     @media screen and (max-width: 991px) {
       left: 0;
       width: 300px;
@@ -113,6 +122,7 @@
       left: 0;
       width: 100%;
     }
+
   }
 
   @media screen and (max-width: 991px) {
@@ -125,9 +135,7 @@
   }
 }
 
-.navigation {
-  position: relative;
-}
+
 
 .sidebar-title {
   height: 60px;
@@ -157,14 +165,31 @@
 .navigation-bmw {
 }
 
-.sub-menu-bwm {
+.sub-menu {
   position: relative;
+ display: none;
+  transition: .3s;
+  transition-timing-function: ease;
+  transition-duration: .35s;
+  transition-property: height,visibility;
+
 
 
   li{
     a{
       display: flex;
+      position: relative;
+      width: 100%;
       align-items: center;
+      cursor: pointer;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+
+
+      &.active {
+        color: aqua;
+
+      }
 
     }
 
@@ -174,7 +199,21 @@
       padding: 0 40px 0 20px;
       height: 40px;
       line-height: 40px;
+      transition: .3s;
+
     }
+
   }
 }
+.open-sub-menu{
+   display: block;
+  //transition-timing-function: ease;
+  //transition-duration: .35s;
+  //transition-property: height,visibility;
 
+
+}
+.rotate-arrow-menu{
+    transform: rotate(0deg);
+
+}

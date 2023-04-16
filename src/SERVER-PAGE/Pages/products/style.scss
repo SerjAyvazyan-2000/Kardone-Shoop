@@ -25,6 +25,19 @@
     color: $Nav;
 
   }
+  h4{
+    a{
+      font-weight: bold;
+      font-size: $font-size-20;
+      color: black;
+      transition: .3s;
+
+      &:hover{
+         color: red;
+      }
+    }
+  }
+
 }
 
 .products-information-box {

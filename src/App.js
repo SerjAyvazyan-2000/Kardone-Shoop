@@ -5,12 +5,17 @@ import ServerPage from "./SERVER-PAGE";
 import AdminPage from "./ADMIN-PAGE";
 
 function App() {
-  return (
-    <div className="App">
-        <ServerPage/>
-        {/*<AdminPage/>*/}
-    </div>
-  );
+    let userToken = localStorage.getItem("userToken",)
+    return (
+        <div className="App">
+            {userToken ?
+                <AdminPage/>
+                :
+                <ServerPage/>
+            }
+
+        </div>
+    );
 }
 
 export default App;

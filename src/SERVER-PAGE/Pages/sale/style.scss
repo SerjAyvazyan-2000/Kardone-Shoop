@@ -162,3 +162,32 @@
 .item-products-info > :not(:last-child) {
   margin: 10px 0 20px;
 }
+.products-select-box{
+  background-color: $antiquewhite;
+  padding: $paddingPagesHeader;
+  border-radius: 10px;
+}
+.products-length,.products-Api-count{
+   padding: 0 10px;
+}
+.products-select-box{
+   display: flex;
+  justify-content: space-between;
+}
+.products-Api-count{
+
+  p{
+    span{
+       margin: 0 5px;
+      cursor: pointer;
+      transition: .3s;
+
+      &:hover{
+        color: red;
+      }
+    }
+    i{
+       font-size: 10px;
+    }
+  }
+}

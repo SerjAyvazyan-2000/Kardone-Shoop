@@ -1,9 +1,11 @@
 import "./style.scss"
+import {Link} from "react-router-dom";
 
 
 const FeaturedProducts = ({item}) => {
-
-    return <div className="product ">
+    return <Link to={`/product/${item.id}`}
+                 // state={{name: item.name, categories: item.categories}}
+                 className="product ">
         <div className="product-image G-image" style={{backgroundImage: `url(${item.img})`}}></div>
         <p>{item.name}</p>
         <h3>${item.prise}</h3>
@@ -12,6 +14,6 @@ const FeaturedProducts = ({item}) => {
             <button>ADD TO CART</button>
         </div>
 
-    </div>
+    </Link>
 }
 export default FeaturedProducts

@@ -113,7 +113,7 @@ const Basket = () => {
                             <p>KARDONE process all orders in USD. Shipping & taxes calculated at checkout.</p>
                         </div>
                         <div className="shopp-checkout-box">
-                            <div className="continue-shoop-tools"><NavLink>Continue Shopping</NavLink></div>
+                            <div className="continue-shoop-tools"><NavLink to={"/catalog"}>Continue Shopping</NavLink></div>
                             <div className="proceed-checkout"><NavLink to={"/checkout"}>Proceed Checkout</NavLink></div>
                         </div>
                     </>

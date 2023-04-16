@@ -10,9 +10,11 @@ import useInformation from "../../../hooks/test-information";
 import product3 from "../../../assets/style/images/product3.avif";
 import Counter from "../basket/counter";
 
+
+
 const Products = () => {
     const id = useParams()
-    const location = useLocation()
+    // const location = useLocation()
     const {featuredProducts, catalog} = useInformation()
 
     const [idProduct, setIdProduct] = useState({
@@ -53,10 +55,11 @@ const Products = () => {
         <div className="product-header">
             <div className="G-container">
                 <div className="product-header-text">
-                    <h4>HOME<i className="icon-arrow-right"></i> COLLECTIONS <i className="icon-arrow-right"></i>
-                        {!location.state ? "Exterior" : location.state.categories}<i
-                            className="icon-arrow-right"></i>
-                        <span>{location.state.name}</span>
+                    <h4> <NavLink to={"/home"}>Home</NavLink> <i className="icon-arrow-right"></i> <NavLink to={`/catalog`}>Collections</NavLink> <i className="icon-arrow-right"></i>
+                        {!idProduct ? "Exterior" : idProduct.categories}
+                        {/*<NavLink to={`$ ${!location.state ? "/Exterior" : location.state.categories}`}></NavLink>*/}
+                        <i className="icon-arrow-right"></i>
+                        <span>{idProduct.name}</span>
 
                     </h4>
                 </div>

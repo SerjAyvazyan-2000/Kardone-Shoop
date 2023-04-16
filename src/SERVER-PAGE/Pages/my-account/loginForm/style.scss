@@ -1,0 +1,18 @@
+@import "../../../../assets/style/variables";
+@import "src/assets/style/shablon";
+
+
+
+.login-account-box > :not(:last-child) {
+  margin: 20px 0 20px 0;
+}
+
+.login-account-box {
+  border: 1px solid $Nav;
+  border-top: 2px solid red;
+  width: 49%;
+
+  @media screen and (max-width: 616px) {
+    width: 100%;
+  }
+}

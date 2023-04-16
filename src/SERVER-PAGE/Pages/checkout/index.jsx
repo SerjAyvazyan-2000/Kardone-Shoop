@@ -13,6 +13,10 @@ const Checkout = () => {
         if(playNow !== "Play Now"){
             setOpenPayment(!openPayment)
         }
+        if(playNow === "payment"){
+            setOpenPayment(!openPayment)
+
+        }
     }
     const returnInformation = (name) => {
        if(name === "Return to information"){
@@ -26,11 +30,11 @@ const Checkout = () => {
             <div className="G-container">
                 <div className="shipping-info-box">
                     <div className="checkout-users-header">
-                        <div className="checkout-users-title"><h2>Kardone</h2></div>
+                        <div className="checkout-users-title"><NavLink to="/home">Kardone</NavLink></div>
                         <div className="checkout-users-text-title">
                             <NavLink to={"/basket"} style={{color: '#0acece'}}>Cart</NavLink><i
                             className="icon-arrow-right"></i><span onClick={()=>returnInformation("Return to information")}>Information</span>
-                            <i className="icon-arrow-right"></i><span>Payment</span>
+                            <i className="icon-arrow-right"></i><span onClick={()=>continueShipping('payment')}>Payment</span>
                         </div>
                     </div>
                     {!openPayment ?
@@ -55,13 +59,16 @@ const Checkout = () => {
                                 </div>
                                 <form action="" className="shipping-form-box">
                                     <div className="input-box-select">
-                                        <input type="text" list="cars" placeholder="Select"/>
-                                        <datalist id="cars">
-                                            <option>Volvo</option>
-                                            <option>Saab</option>
-                                            <option>Mercedes</option>
-                                            <option>Audi</option>
-                                        </datalist>
+                                        <select id="cars">
+                                            <option>Åland Islands</option>
+                                            <option>Armenia</option>
+                                            <option>Russian</option>
+                                            <option>America</option>
+                                            <option>Italia</option>
+                                            <option>France</option>
+
+
+                                        </select>
 
                                     </div>
                                     <div className="firstname-lastname-box">

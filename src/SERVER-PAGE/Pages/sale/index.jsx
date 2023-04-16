@@ -135,11 +135,12 @@ const Sale = () => {
                     </div>
                 </div>
                 {featuredProducts.length ?
+                    <>
                     <div className="sale-products-list">
                         {featuredProducts.map((item, index) => {
                             return <div className="sale-products-item ">
                                 <Link to={`/product/${item.id}`}
-                                      state={{name: item.name, categories: item.categories}}
+                                      // state={{name: item.name, categories: item.categories}}
                                       className="item-products-image G-image"
                                       style={{backgroundImage: `url(${item.img})`}}>
 
@@ -153,10 +154,35 @@ const Sale = () => {
 
                             </div>
                         })}
+
                     </div>
+                        <div className="products-API-select">
+                             <div className="G-container">
+                                  <div className="products-select-box">
+                                        <div className="products-length">
+                                             <p>
+                                                 of 1 – 8 product(s)    {featuredProducts.length} -es cuyc em talis qanaky
+                                             </p>
+                                        </div>
+                                       <div className="products-Api-count">
+                                            <p>
+
+                                                <span><i className="icon-arrow-left"></i> Previous</span>
+                                                <span>1</span>
+                                                <span>2</span>
+                                                <span>Next  <i className="icon-arrow-right"></i></span>
+
+
+                                            </p>
+                                       </div>
+                                  </div>
+                             </div>
+                        </div>
+                    </>
 
 
                     : <div>Empty list</div>}
+
             </div>
 
         </section>
