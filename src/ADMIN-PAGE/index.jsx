@@ -9,7 +9,7 @@ import Mercedes from "./pages/mersedes";
 import Opel from "./pages/opel";
 import Toyota from "./pages/toyota";
 import AddNewProduct from "./pages/addNewProduct";
-import Collection from "./pages/collection";
+import Collections from "./pages/catalog";
 
 const AdminPage = () => {
     const [navActive,setNavActive] = useState(false)
@@ -27,9 +27,8 @@ const AdminPage = () => {
                         <Route path="mercedes" element={<Mercedes/>}/>
                         <Route path="toyota" element={<Toyota/>}/>
                         <Route path="opel" element={<Opel/>}/>
-                        <Route path="addNewProduct" element={<AddNewProduct/>}/>
-                        <Route path="collection" element={<Collection/>}/>
-
+                        <Route path={"/addNewProduct"} element={<AddNewProduct/>}/>
+                        <Route path="collections" element={<Collections/>}/>
                     </Routes>
                 </div>
 

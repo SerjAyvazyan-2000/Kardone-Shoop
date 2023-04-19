@@ -1,8 +1,8 @@
 import "./style.scss"
-import CostumersInput from "../../../../UI/costumersInput";
 import React from "react";
 import useRegisterValidate from "./registerValidate";
 import {toast} from "react-toastify";
+import MyInput from "../../../../UI/MyInput";
 
 const RegisterForm = ({openRegister,getRegister}) => {
 
@@ -48,7 +48,7 @@ const RegisterForm = ({openRegister,getRegister}) => {
             <div className="register-input-block">
                 <div className="register-input-name"><p>FirstName</p></div>
                 <div className="register-input-tools">
-                    <CostumersInput
+                    <MyInput
                         onchange={handleChange}
                         nameInput={"FirstName"}
                         errorText={errorText.FirstName}
@@ -60,7 +60,7 @@ const RegisterForm = ({openRegister,getRegister}) => {
             <div className="register-input-block">
                 <div className="register-input-name"><p>LastName</p></div>
                 <div className="register-input-tools">
-                    <CostumersInput
+                    <MyInput
                         onchange={handleChange}
                         nameInput={"LastName"}
                         errorText={errorText.LastName}
@@ -74,7 +74,7 @@ const RegisterForm = ({openRegister,getRegister}) => {
             <div className="register-input-block">
                 <div className="register-input-name"><p>EmailAddress</p></div>
                 <div className="register-input-tools">
-                    <CostumersInput
+                    <MyInput
                         onchange={handleChange}
                         nameInput={"EmailAddress"}
                         errorText={errorText.EmailAddress}
@@ -87,7 +87,7 @@ const RegisterForm = ({openRegister,getRegister}) => {
             <div className="register-input-block">
                 <div className="register-input-name"><p>Password</p></div>
                 <div className="register-input-tools">
-                    <CostumersInput
+                    <MyInput
                         onchange={handleChange}
                         nameInput={"Password"}
                         errorText={errorText.Password}
@@ -100,7 +100,7 @@ const RegisterForm = ({openRegister,getRegister}) => {
             <div className="register-input-block">
                 <div className="register-input-name"><p>ConfirmPassword</p></div>
                 <div className="register-input-tools">
-                    <CostumersInput
+                    <MyInput
                         onchange={handleChange}
                         nameInput={"ConfirmPassword"}
                         errorText={errorText.ConfirmPassword}

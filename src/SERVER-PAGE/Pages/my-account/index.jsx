@@ -1,7 +1,7 @@
 import "./style.scss"
 import Header from "../header";
 import React, {useState} from "react";
-import CostumersInput from "../../../UI/costumersInput";
+import CostumersInput from "../../../UI/MyInput";
 import ScrollTop from "../../Components/scrollTop";
 import useRegisterValidate from "./regis]trationBox/registerValidate";
 import { ToastContainer, toast } from 'react-toastify';

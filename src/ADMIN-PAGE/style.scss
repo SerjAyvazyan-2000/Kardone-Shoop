@@ -13,8 +13,8 @@
 .admin-section {
   position: absolute;
   top: 0;
-  width: calc(100% - 300px);
-  left: 300px;
+  width: calc(100% - 250px);
+  left: 250px;
   min-height: 100vh;
   background: $white;
   transition: 0.5s;
@@ -28,9 +28,9 @@
       color: $white;
     }
 
-    @media screen  and (max-width: 991px){
-      left: 300px;
-    }
+    //@media screen  and (max-width: 991px){
+    //  left: 300px;
+    //}
 
   }
 

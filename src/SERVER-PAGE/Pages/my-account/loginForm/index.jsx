@@ -1,8 +1,8 @@
 import "./style.scss"
-import CostumersInput from "../../../../UI/costumersInput";
 import React, {useEffect, useState} from "react";
 import useEmailValidate from "./loginValidate";
 import {toast} from "react-toastify";
+import MyInput from "../../../../UI/MyInput";
 
 const LoginForm = ({getForgotPassword}) => {
 
@@ -30,7 +30,7 @@ const LoginForm = ({getForgotPassword}) => {
             <div className="login-title"><h3>ALREADY REGISTERED?</h3></div>
             <form>
                 <div className="login-input-block">
-                    <CostumersInput
+                    <MyInput
                         nameText="Password"
                         type="text"
                         onchange={handleChange}
@@ -41,7 +41,7 @@ const LoginForm = ({getForgotPassword}) => {
                     />
                 </div>
                 <div className="login-input-block">
-                    <CostumersInput
+                    <MyInput
                         nameText="Email"
                         type="text"
                         onchange={handleChange}

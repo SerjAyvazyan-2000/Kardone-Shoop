@@ -1,9 +1,16 @@
 import "./style.scss"
+import AutoParts from "../autoParts";
+import useInformation from "../../../hooks/test-information";
 
 const Bmw = () => {
+    const {featuredProducts} = useInformation()
 
     return <div className="bmw-section">
-         hello Bmw
+         <AutoParts
+             carName={"BMW"}
+             autoPartsList={featuredProducts}
+
+         />
     </div>
 }
 export default Bmw

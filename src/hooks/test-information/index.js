@@ -196,6 +196,9 @@ const useInformation = () => {
         },
 
 
+
+
+
     ]
 
     return {homeSliderInfo, featuredProducts, catalog}

@@ -7,6 +7,7 @@ import {SiMercedes} from "react-icons/si"
 import {SiToyota} from "react-icons/si"
 import {SiOpel} from "react-icons/si"
 import {GiExitDoor} from "react-icons/gi"
+import {GrCatalog} from "react-icons/gr"
 
 import React, {useState} from "react";
 import {AiOutlineShoppingCart} from "react-icons/ai"
@@ -22,14 +23,24 @@ import SignOut from "../signOut";
 const Sidebar = ({navActive}) => {
     const [subMenuBmw ,setSubMenuBmw] = useState(false)
     const [subMenuMers ,setSubMenuMers] = useState(false)
+    const [subMenuToyota ,setSubMenuToyota] = useState(false)
+    const [subMenuOpel ,setSubMenuOpel] = useState(false)
+
+
     const [openModal,setOpenModal] = useState(false)
 
 
     const openSubMenuBmw = () =>{
         setSubMenuBmw(!subMenuBmw)
     }
+    const openSubMenuToyota = () =>{
+        setSubMenuToyota(!subMenuToyota)
+    }
     const openSubMenuMers = () =>{
         setSubMenuMers(!subMenuMers)
+    }
+    const openSubMenuOpel = () =>{
+        setSubMenuOpel(!subMenuOpel)
     }
     const signOut = () => {
         setOpenModal(!openModal)
@@ -50,6 +61,12 @@ const Sidebar = ({navActive}) => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to={"/collections"} className="navigation-box">
+                        <span className="icon"><GrCatalog/></span>
+                        <span className="title">Collections</span>
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/bmw" className="navigation-box">
                         <span className="icon"><SiBmw/></span>
                         <span className="title">BMW</span>
@@ -58,19 +75,14 @@ const Sidebar = ({navActive}) => {
                     <ul className={`sub-menu  ${subMenuBmw ? "open-sub-menu" : ''}`}>
                         <li>
                             <NavLink
-                                state={{name: "name", description: "description"}}
+                                state={{carName: "BMW"}}
                                 to={"/addNewProduct"}>
                                 <span className="icon"><AiOutlineArrowRight/></span>
                                 <span className="title">Add New Product</span>
                             </NavLink>
 
                         </li>
-                        <li>
-                            <NavLink to={"/collection"}>
-                                <span className="icon"><AiOutlineArrowRight/></span>
-                                <span className="title">Collection</span>
-                            </NavLink>
-                        </li>
+
                     </ul>
                 </li>
                 <li>
@@ -78,41 +90,58 @@ const Sidebar = ({navActive}) => {
                         <span className="icon"><SiMercedes/></span>
                         <span className="title">MERCEDES</span>
                         <span onClick={openSubMenuMers} className={`menu-arrow  ${subMenuMers ? "rotate-arrow-menu" : ''}`}></span>
-
                     </NavLink>
                     <ul className={`sub-menu  ${subMenuMers ? "open-sub-menu" : ''}`}>
                         <li>
                             <NavLink
-                                state={{name: "name", description: "description"}}
+                                state={{carName: "MERCEDES", description: "description"}}
                                 to={"/addNewProduct"}>
                                 <span className="icon"><AiOutlineArrowRight/></span>
                                 <span className="title">Add New Product</span>
                             </NavLink>
 
                         </li>
-                        <li>
-                            <NavLink to={"/collection"}>
-                                <span className="icon"><AiOutlineArrowRight/></span>
-                                <span className="title">Collection</span>
-                            </NavLink>
-                        </li>
+
                     </ul>
                 </li>
                 <li>
                     <NavLink to={"/toyota"} className="navigation-box">
                         <span className="icon"><SiToyota/></span>
                         <span className="title">TOYOTA</span>
-                        <span className="menu-arrow"></span>
-
+                        <span  onClick={openSubMenuToyota} className="menu-arrow"></span>
                     </NavLink>
+                    <ul className={`sub-menu  ${subMenuToyota ? "open-sub-menu" : ''}`}>
+                        <li>
+                            <NavLink
+                                state={{carName: "TOYOTA"}}
+                                to={"/addNewProduct"}>
+                                <span className="icon"><AiOutlineArrowRight/></span>
+                                <span className="title">Add New Product</span>
+                            </NavLink>
+
+                        </li>
+
+                    </ul>
+
                 </li>
                 <li>
                     <NavLink to={"/opel"} className="navigation-box">
                         <span className="icon"><SiOpel/></span>
                         <span className="title">OPEL</span>
-                        <span className="menu-arrow"></span>
-
+                        <span onClick={openSubMenuOpel} className="menu-arrow"></span>
                     </NavLink>
+                    <ul className={`sub-menu  ${subMenuOpel ? "open-sub-menu" : ''}`}>
+                        <li>
+                            <NavLink
+                                state={{carName: "OPEL"}}
+                                to={"/addNewProduct"}>
+                                <span className="icon"><AiOutlineArrowRight/></span>
+                                <span className="title">Add New Product</span>
+                            </NavLink>
+
+                        </li>
+                    </ul>
+
                 </li>
                 <li>
                     <NavLink to={''} onClick={signOut} className="navigation-box">
