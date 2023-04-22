@@ -191,7 +191,7 @@ const useInformation = () => {
             productsCount: 0,
             img: slider1,
             description: 'So, if you like listening to the sound of your engine, or if you like the smell of burning rubber of your wheels, you are in the right place.We provide auto spare parts and our main goal is to satisfy all of our customers. The secret of our success is that our goods are an unbeaten combination of high quality and fair price. We produce and sell only professional parts - that’s why we have a great number of devoted clients all over the country and there is nothing better than the happy and satisfied customers. Our goods are real bestsellers; we are offering a great list of some unique spare parts that have no analogues. We believe that everything must be perfect in our business. And don’t' +
-                ' forget you can save your money with the help of our system of benefits and discounts.',
+                ' forget you can save your with the help of our system of benefits and discounts.',
             id: 5
         },
 

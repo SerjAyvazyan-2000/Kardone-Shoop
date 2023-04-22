@@ -14,12 +14,10 @@ const CatalogItems = ({item}) => {
 
     const editCollection = () => {
         setOpenEditDeleteModal(!openEditModal)
-
     }
     const deleteCollectionModal = () => {
         setOpeDeleteModal(!openDeleteModal)
     }
-
     return <>
         <div style={{backgroundImage: `url(${item.img})`}}
              className="catalog-parts-item G-image">
