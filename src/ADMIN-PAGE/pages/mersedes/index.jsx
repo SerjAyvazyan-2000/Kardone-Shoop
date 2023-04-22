@@ -8,7 +8,7 @@ const Mercedes = () => {
     return <div className="mercedes-section">
          <AutoParts
              carName={"MERCEDES"}
-             // autoPartsList={featuredProducts}
+             autoPartsList={featuredProducts}
          />
     </div>
 }

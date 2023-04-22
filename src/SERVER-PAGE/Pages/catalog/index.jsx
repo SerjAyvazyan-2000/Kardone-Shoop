@@ -16,7 +16,7 @@ const Catalog = () => {
             <div className="catalog-header">
                 <div className="G-container">
                     <div className="catalog-header-text">
-                        <h3>HOME <span>COLLECTIONS</span></h3>
+                        <h4><NavLink to={"/home"}>HOME</NavLink> <i className="icon-arrow-right"></i> <span>COLLECTIONS</span></h4>
                     </div>
                 </div>
             </div>

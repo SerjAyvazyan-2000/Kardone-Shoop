@@ -100,13 +100,19 @@
   display: flex;
   justify-content: center;
   margin: 20px 0 0 ;
-  button{
+
+  input[type = "file"]{
+    display: none;
+  }
+  label{
      width: 60%;
     padding: 10px 10px;
     color: $blue;
     border: 1px solid $blue;
     border-radius: 20px;
     transition: .3s;
+    text-align: center;
+    cursor: pointer;
 
     &:hover{
         background-color: $blue;
@@ -150,16 +156,7 @@
   justify-content: center;
   button{
      width: 80%;
-    padding: 10px 10px;
-    background-color: $blue;
-    color: white;
-    border-radius: 10px;
-    transition: .3s;
 
-    &:hover{
-      background-color: $blueCheckoutHover;
-
-    }
   }
 }
 

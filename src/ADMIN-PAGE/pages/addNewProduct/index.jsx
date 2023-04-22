@@ -4,6 +4,7 @@ import CostumersInput from "../../../UI/MyInput";
 import {FaCloudUploadAlt} from "react-icons/fa"
 import MyInput from "../../../UI/MyInput";
 import MySelect from "../../../UI/mySelect";
+import MyButton from "../../../UI/myButton";
 
 const AddNewProduct = () => {
   const location = useLocation()
@@ -50,7 +51,8 @@ const AddNewProduct = () => {
                             <div className="upload-image-icon"><FaCloudUploadAlt/></div>
                             <div className="upload-description"><p>Drag&Drop Your File(s)Here To Upload</p></div>
                             <div className="upload-tools-btn">
-                                <button>or select file to upload</button>
+                                <label htmlFor="file">or select file to upload</label>
+                                <input id="file" type="file"/>
                             </div>
                         </div>
                     </div>
@@ -111,7 +113,11 @@ const AddNewProduct = () => {
                          <MyInput nameText={"Product Tags"} placeholder={"Enter Products Tags"}/>
                     </div>
                     <div className="product-save-box">
-                         <button>Save Product</button>
+                        <MyButton
+                            name={"Save Product"}
+                            bgColor={"red"}
+                            hover={"black"}
+                        />
                     </div>
 
 

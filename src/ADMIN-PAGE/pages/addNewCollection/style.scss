@@ -1,0 +1,91 @@
+@import "src/assets/style/variables";
+
+.add-collection-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  p {
+  font-size:$font-size-20 ;
+
+
+  }
+  span{
+    font-size:$font-size-20 ;
+
+  }
+  i{
+
+  }
+
+
+}
+.add-collection-box{
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.add-collection-image > :not(:last-child){
+    margin: 0 0 10px;
+}
+.add-collection-image{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px dashed;
+  padding: 10px;
+   input[type = "file"]{
+     display: none;
+   }
+
+
+  .images{
+     width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+}
+.upload-images-box{
+   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2%;
+  position: relative;
+
+  p{
+    color: red;
+  }
+  .upload-icon{
+    position: absolute;
+    left: 50px;
+    top: 8px;
+    color: black;
+
+
+  }
+  label {
+    width: 100%;
+    padding: 10px 10px;
+    color: $blue;
+    border: 1px solid $blue;
+    border-radius: 20px;
+    transition: .3s;
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+      background-color: $blue;
+      color: white;
+    }
+  }
+}
+.add-collection-tools > :not(:last-child){
+   margin: 20px 0 20px;
+}
+.add-collection-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+

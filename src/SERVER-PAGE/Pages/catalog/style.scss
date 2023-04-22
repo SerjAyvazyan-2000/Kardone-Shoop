@@ -21,6 +21,31 @@
     font-weight: 300;
   }
 }
+.catalog-header-text {
+  letter-spacing:$letterSpacing;
+
+  i {
+    font-size: $iconRow;
+    color: $Nav;
+  }
+
+  span {
+    color: $Nav;
+  }
+  a{
+    color: black;
+    transition: .3s;
+
+    &:hover{
+      color: red;
+    }
+  }
+  //h4 > :not(:last-child){
+  //  margin: 5px;
+  //
+  //}
+
+}
 
 .catalog-pages {
   padding: 10px 0 0 0;

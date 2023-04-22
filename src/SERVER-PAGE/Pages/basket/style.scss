@@ -21,6 +21,14 @@
   span {
     color: $Nav;
   }
+  a {
+    color: black;
+    transition: .3s;
+
+    &:hover {
+      color: red;
+    }
+  }
 }
 
 .basket-title {

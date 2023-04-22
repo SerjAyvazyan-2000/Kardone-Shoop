@@ -16,7 +16,7 @@ const Basket = () => {
             <div className="basket-header">
                 <div className="G-container">
                     <div className="basket-header-text">
-                        <h3>HOME <i className="icon-arrow-right"></i> <span>YOUR SHOPPING CART</span></h3>
+                        <h3><NavLink to={"/home"}>HOME</NavLink> <i className="icon-arrow-right"></i> <span>YOUR SHOPPING CART</span></h3>
                     </div>
                 </div>
             </div>

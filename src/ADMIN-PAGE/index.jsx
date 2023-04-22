@@ -8,8 +8,9 @@ import Bmw from "./pages/bmw";
 import Mercedes from "./pages/mersedes";
 import Opel from "./pages/opel";
 import Toyota from "./pages/toyota";
-import AddNewProduct from "./pages/addNewProduct";
 import Collections from "./pages/catalog";
+import AddNewCollection from "./pages/addNewCollection";
+import AddNewProduct from "./pages/addNewProduct";
 
 const AdminPage = () => {
     const [navActive,setNavActive] = useState(false)

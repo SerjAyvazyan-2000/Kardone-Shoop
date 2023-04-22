@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import useInformation from "../../../hooks/test-information";
 import Payment from "./payment";
+import MyInput from "../../../UI/MyInput";
 
 
 const Checkout = () => {
@@ -45,9 +46,8 @@ const Checkout = () => {
                                     <p>Already have an account?<NavLink to="/my-account">Log in</NavLink></p>
                                 </div>
                                 <div className="contact-input-box">
-                                    <label htmlFor="">
-                                        <input type="text" placeholder="Email or mobile phone number"/>
-                                    </label>
+                                    <MyInput placeholder="Email or mobile phone number"/>
+
                                     <label htmlFor="">
                                         <input type="checkbox"/><span>Email me with news and offers</span>
                                     </label>
@@ -72,28 +72,22 @@ const Checkout = () => {
 
                                     </div>
                                     <div className="firstname-lastname-box">
-                                        <label htmlFor="">
-                                            <input type="text" placeholder="firstanem"/>
-                                        </label>
-                                        <label htmlFor="">
-                                            <input type="text" placeholder="lastname"/>
-                                        </label>
+                                        <MyInput placeholder="firstname"/>
+                                        <MyInput placeholder="lastname"/>
+
                                     </div>
                                     <div className="shipping-address-box">
-                                        <label htmlFor="">
-                                            <input type="text" placeholder="Address"/>
-                                        </label>
+                                        <MyInput placeholder="Addres"/>
+
                                     </div>
 
                                     <div className="apartment-box">
-                                        <label htmlFor="">
-                                            <input type="text" placeholder="Apartment, suite, etc. (optional)"/>
-                                        </label>
+                                        <MyInput placeholder="Apartment, suite, etc. (optional)"/>
+
                                     </div>
                                     <div className="city-box">
-                                        <label htmlFor="">
-                                            <input type="text" placeholder="City"/>
-                                        </label>
+                                        <MyInput placeholder="City"/>
+
                                         <label htmlFor="">
                                             <input type="checkbox"/><span>Email me with news and offers</span>
                                         </label>

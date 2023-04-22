@@ -21,8 +21,13 @@
   span {
     color: $Nav;
   }
-  h4 > :not(:last-child){
-    margin: 5px;
+  a {
+    color: black;
+    transition: .3s;
+
+    &:hover {
+      color: red;
+    }
   }
 }
 

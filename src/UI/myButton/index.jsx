@@ -2,9 +2,9 @@
 
 import "./style.scss"
 
-const MyButton = ({hover,color,bgColor,children,name}) => {
+const MyButton = ({hover,color,bgColor,children,name ,onClick}) => {
 
-    return <button   className={`my-button ${hover} ${color} ${bgColor} `} >
+    return <button onClick={onClick}  className={`my-button ${hover} ${color} ${bgColor} `} >
         {name}
     </button>
 }

@@ -53,7 +53,7 @@ const Sale = () => {
             <div className="sale-header">
                 <div className="G-container">
                     <div className="sale-header-text">
-                        <h4>HOME<i className="icon-arrow-right"></i> COLLECTIONS <i
+                        <h4><NavLink to={"/home"}>HOME</NavLink>  <i className="icon-arrow-right"></i> <NavLink to={"/catalog"}>COLLECTIONS</NavLink> <i
                             className="icon-arrow-right"></i><span>
                             {!location.state ? "Exterior" : location.state.name}
                         </span></h4>
