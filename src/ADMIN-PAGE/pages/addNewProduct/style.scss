@@ -80,7 +80,7 @@
 
 }
 .add-images-bpx{
-   height: 300px;
+   min-height: 300px;
   border: 1px dashed;
 }
 .upload-description{
@@ -95,6 +95,13 @@
      color: $blue;
   }
 }
+.images-errorText{
+   p{
+      text-align: center;
+     color: red;
+   }
+}
+
 .upload-tools-btn{
  width: 100%;
   display: flex;

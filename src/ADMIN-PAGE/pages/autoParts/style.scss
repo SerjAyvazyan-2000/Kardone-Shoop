@@ -96,19 +96,25 @@
 
 
 }
+.auto-parts-image-box{
+  display: flex;
+  width: 100%;
+  gap: 1.2%;
+  padding: 5px;
+  flex-wrap: wrap;
+}
 .auto-parts-item{
   width: 19%;
-  min-height: 300px;
    background-color: white;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 0 0 1%;
+  position: relative;
 
   .auto-parts-image{
-     width: 90%;
-    height: 50%;
+     width: 32%;
+    height: 50px;
     margin: 20px 0 20px;
 
     @media screen and (max-width: 440px){
@@ -117,7 +123,7 @@
     }
   }
   .auto-parts-information{
-      padding: 20px;
+      padding: 5px;
   }
 
   @media screen and (max-width: 1364px){
@@ -141,7 +147,31 @@
      font-size: $font-size-20;
    }
 }
+.parts-prise{
+
+  i{
+     font-weight: bold;
+  }
+}
 .parts-prise-sale-box{
    display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.parts-stars-remove{
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.edit-auto-parts{
+   position: absolute;
+  right: 10px;
+  top: 0;
+  color: $blue;
+  transition: .3s;
+  cursor: pointer;
+
+  &:hover{
+    color: $blueCheckoutHover;
+  }
 }

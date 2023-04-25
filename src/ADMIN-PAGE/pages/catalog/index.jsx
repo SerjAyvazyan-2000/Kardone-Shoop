@@ -21,8 +21,8 @@ const Collections = () => {
     const dispatch = useDispatch()
 
     const [openModal, setOpenModal] = useState(false)
-    // const [openDeleteModal, setOpeDeleteModal] = useState(false)
-    // const [openEditModal, setOpenEditDeleteModal] = useState(false)
+    const [loading, setLoading] = useState(false)
+
 
     const optionListSort = [
         {name: 'Dropdown link', id: 1},
@@ -34,22 +34,16 @@ const Collections = () => {
         setOpenModal(!openModal)
     }
     const getCollection = async () => {
+        setLoading(true)
         const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection')
          if(result.data){
+             setLoading(false)
              dispatch(setCollection(result.data))
          }
     }
     useEffect(() => {
         getCollection()
     }, [])
-
-    // const editCollection = () => {
-    //     setOpenEditDeleteModal(!openEditModal)
-    //
-    // }
-    // const deleteCollectionModal = () => {
-    //     setOpeDeleteModal(!openDeleteModal)
-    // }
 
 
     return <>
@@ -77,52 +71,30 @@ const Collections = () => {
                     </div>
                 </div>
             </div>
-            {collectionRedux.length ?
-                <div className="catalog-parts-boxes">
-                    <div className="collection-title-text"><p>COLLECTIONS</p></div>
-                    <div className="catalog-boxes-container">
-                        {collectionRedux.map((item, index) => {
-                            return <CatalogItems
-                                item={item}
-                                key={index}
-                            />
-                            // return <div style={{backgroundImage: `url(${item.img})`}}
-                            //             className="catalog-parts-item G-image">
-                            //     <div className="catalog-tem-bg"></div>
-                            //     <div className="catalog-item-info ">
-                            //         <h3>{item.name}</h3>
-                            //         <p>{collectionRedux.length} Products</p>
-                            //     </div>
-                            //     <div className="catalog-item-remove">
-                            //         <MyButton
-                            //             name={"Remove"}
-                            //             bgColor={"red"}
-                            //             hover={"black"}
-                            //             onClick={deleteCollectionModal}
-                            //         />
-                            //     </div>
-                            //     <div className="catalog-item-edit"><span onClick={editCollection} className="icon-pencil2"></span></div>
-                                {/*=====================MODAL BOXES=============================*/}
-                                // {openDeleteModal ? <MyModal onClose={deleteCollectionModal}><DeleteCollection onClose={deleteCollectionModal}
-                                //                                               id={item._id}
-                                //                                               name={item.name}
-                                //  /> </MyModal> : null}
-                                // {openEditModal ? <MyModal
-                                //     children={<AddNewCollection
-                                //         editItem={item}
-                                //         onClose={editCollection}/>} onClose={editCollection}></MyModal> : null}
+            {!loading ?
+              <>
+                  {collectionRedux.length?
+                      <div className="catalog-parts-boxes">
+                          <div className="collection-title-text"><p>COLLECTIONS</p></div>
+                          <div className="catalog-boxes-container">
+                              {collectionRedux.map((item, index) => {
+                                  return <CatalogItems
+                                      item={item}
+                                      key={index}
+                                  />
 
-                                {/*=====================MODAL BOXES=============================*/}
-                            // </div>
+                              })}
+                          </div>
 
-                        })}
-                    </div>
+                      </div>
 
-                </div>
-
-                :
-                <EmptyList productType={"Catalog"}/>
+                      : <EmptyList handleClick={handleClick} productType={"Catalog"}/>}
+              </>
+             : <div>Loading...</div>
             }
+
+
+
 
         </div>
         {openModal ?

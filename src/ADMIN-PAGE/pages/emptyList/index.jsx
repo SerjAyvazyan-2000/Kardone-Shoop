@@ -2,7 +2,7 @@
 import "./style.scss"
 import {NavLink} from "react-router-dom";
 
-const EmptyList = ({productType,routeName,carName}) => {
+const EmptyList = ({productType,routeName,carName,handleClick}) => {
 
     return <div className="empty-list">
         <h3>Hello, nice to see you!</h3>
@@ -11,7 +11,7 @@ const EmptyList = ({productType,routeName,carName}) => {
                  className="empty-box"
                   state={{carName}}
          >
-            <button>Add New {productType}</button>
+            <button onClick={handleClick}>Add New {productType}</button>
             <span className="icon-plus"></span>
         </NavLink>
 

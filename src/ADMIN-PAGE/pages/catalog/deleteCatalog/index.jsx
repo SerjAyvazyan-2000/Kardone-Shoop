@@ -30,8 +30,6 @@ const DeleteCollection = ({name, onClose, id}) => {
         const result = await axios.delete(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection/${id}`)
         if (result) {
             setBtnDelete(true)
-            console.log(btnDeleteText(),"true,cool arec ekav")
-
         }
 
 
