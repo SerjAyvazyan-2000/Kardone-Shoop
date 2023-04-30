@@ -1,9 +1,10 @@
 import "./style.scss"
+import CardBox from "../cardBox";
 
 const Dashboard = () => {
 
     return <div className="dashboard-section">
-         hello Dashboard
+         <CardBox/>
     </div>
 }
 export default Dashboard

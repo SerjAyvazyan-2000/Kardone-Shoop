@@ -24,7 +24,8 @@ const AddNewCollection = ({onClose, editItem}) => {
 
     const [newCollection, setNewCollection] = useState({
         name: '',
-        img: null
+        img: null,
+        productList:[]
     })
     const [errorText, setErrorText] = useState({
         name: '',
@@ -65,6 +66,8 @@ const AddNewCollection = ({onClose, editItem}) => {
         setBtnLoading(false)
         const result = await axios.post('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection', newCollection)
         if (result.data) {
+            setBtnLoading(true)
+
             await getCollection()
         }
 

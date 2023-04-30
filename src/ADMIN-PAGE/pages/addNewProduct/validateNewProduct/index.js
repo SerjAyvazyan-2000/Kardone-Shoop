@@ -4,7 +4,7 @@ import testImage from "../../../../assets/style/images/logo.png"
 import testImage1 from "../../../../assets/style/images/banner.webp"
 
 
-const useValidateNewProduct = () => {
+const useValidateNewProduct = (carName) => {
 
     const [newAutoParts, setNewAutoParts] = useState({
         productName: '',
@@ -99,6 +99,11 @@ const useValidateNewProduct = () => {
         }
         if (!newAutoParts.vehicleType.trim().length) {
             errorString.vehicleType = "Fill in the required vehicle type"
+            validate = false
+
+        }
+        if (newAutoParts.vehicleType.trim().length && newAutoParts.vehicleType !== carName ) {
+            errorString.vehicleType = `Create a spare part only for the given car, eg ${carName}`
             validate = false
 
         }

@@ -81,11 +81,16 @@
     padding: 7px 20px;
     font-size: $font-size-20;
     color: white;
+
+    span{
+      margin: 0 0 0 10px;
+    }
   }
 
   & {
     @extend %hoverBgColorBlack
   }
+
 }
 
 
@@ -213,6 +218,7 @@
 .sub-menu-list-catalog {
   width: 100%;
   min-height: 200px;
+  min-width: 200px;
   display: none;
   position: absolute;
   left: 0;
@@ -235,6 +241,7 @@
       color: white;
       padding: 5px;
       margin: 5px;
+
 
 
       & {

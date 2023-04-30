@@ -4,7 +4,7 @@ import CostumersInput from "../../../UI/MyInput";
 import MySelect from "../../../UI/mySelect";
 import useInformation from "../../../hooks/test-information";
 import EmptyList from "../emptyList";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import MyModal from "../../../UI/myModal";
 import AddNewProduct from "../addNewCollection";
 import AddNewCollection from "../addNewCollection";
@@ -15,18 +15,21 @@ import { setCollection} from "../../../store/reducers/collection";
 import DeleteProduct from "./deleteCatalog";
 import DeleteCollection from "./deleteCatalog";
 import CatalogItems from "./catalogItems";
+import {setProduct} from "../../../store/reducers/createAutoParts";
 
 const Collections = () => {
     const collectionRedux = useSelector(state => state.Collection.collectionList)
     const dispatch = useDispatch()
-
     const [openModal, setOpenModal] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [sortValue,setSortValue] = useState('')
+
 
 
     const optionListSort = [
-        {name: 'Dropdown link', id: 1},
-        {name: 'Dropdown link', id: 2}
+        {value: 'name',name:'Name', id: 1},
+        {value: 'img',name:'count', id: 1},
+
 
     ]
 
@@ -44,6 +47,15 @@ const Collections = () => {
     useEffect(() => {
         getCollection()
     }, [])
+    const handleSort = (sort) => {
+        setSortValue(sort)
+    }
+    useMemo(()=>{
+        if(sortValue){
+            let newSortList = [...collectionRedux].sort((a,b)=>a[sortValue].localeCompare(b[sortValue]))
+            dispatch(setCollection(newSortList))
+        }
+    },[sortValue])
 
 
     return <>
@@ -65,8 +77,10 @@ const Collections = () => {
                     </div>
                     <div className="sort-select-box">
                         <MySelect
-                            optionList={optionListSort}
                             defaultValue={"Sort"}
+                            value={sortValue}
+                            optionList={optionListSort}
+                            onchange={handleSort}
                         />
                     </div>
                 </div>

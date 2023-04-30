@@ -27,6 +27,8 @@
   padding: 10px;
   margin-top: 20px;
   border-radius: 10px;
+
+
 }
 .add-product-title{
    padding: 0 0 20px;
@@ -36,12 +38,20 @@
    display: flex;
   justify-content: space-between;
   margin-top: 20px;
+
+  @media screen  and (max-width: 736px){
+    flex-direction: column;
+  }
 }
 .product-tools-row-1{
    width: 59%;
   border: 1px solid $Nav;
   border-radius: 10px;
   padding: 10px;
+
+  @media screen  and (max-width: 736px){
+     width: 100%;
+  }
 }
 .product-tools-row-1 > :not(:last-child){
    margin: 0 0 20px;
@@ -59,6 +69,10 @@
   padding: 10px;
   border: 1px solid $Nav;
   border-radius: 10px;
+
+  @media screen  and (max-width: 736px){
+    width: 100%;
+  }
 
 }
 .description-textarea{

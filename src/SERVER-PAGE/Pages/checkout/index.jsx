@@ -1,14 +1,19 @@
 import "./style.scss"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
 import useInformation from "../../../hooks/test-information";
 import Payment from "./payment";
 import MyInput from "../../../UI/MyInput";
+import EmptyList from "../../Components/emptyList";
+import {useSelector} from "react-redux";
 
 
 const Checkout = () => {
     const {featuredProducts} = useInformation()
     const [openPayment, setOpenPayment] = useState(false)
+    const basketList = useSelector(state => state.BasketProduct.basketList)
+    const [totalPrise,setTotalPrise] = useState(0)
+
 
     const continueShipping = (playNow) => {
         if(playNow !== "Play Now"){
@@ -25,8 +30,55 @@ const Checkout = () => {
        }
 
     }
+    useEffect(()=>{
+        let price = 0
+
+        if(basketList.length){
+            basketList.forEach((item,index)=>{
+                price += +item.price
+                setTotalPrise(price)
+
+            })
+        }
+
+    },[])
 
     return <div className="checkout-section">
+
+        <div className="checkout-product-box">
+            {basketList.length ?
+                <div className="G-container">
+                    <div className="basket-products">
+                        {basketList.map((item, index) => {
+                            return <div className="basket-products-item">
+                                <div style={{backgroundImage: `url(${item.productImages[0]})`}}
+                                     className="basket-products-item-image G-image"></div>
+                                <div className="basket-products-item-name">
+                                    <p>{item.productName}</p>
+                                    <p>{item.weight}</p>
+                                </div>
+                                <div className="basket-products-item-prise"><p>${item.price}</p></div>
+                            </div>
+                        })}
+                        <div className="subtotal-box">
+                            <p>Subtotal</p>
+                            <p>$ {totalPrise}</p>
+                        </div>
+                        <div className="shipping-box">
+                            <p>Subtotal</p>
+                            <p>Free {totalPrise})</p>
+                        </div>
+                        <div className="total-box">
+                            <p>Total</p>
+                            <span>USD ${totalPrise}</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                :
+                <EmptyList/>}
+        </div>
         <div className="checkout-users-info-box">
             <div className="G-container">
                 <div className="shipping-info-box">
@@ -125,40 +177,6 @@ const Checkout = () => {
         </div>
 
 
-        <div className="checkout-product-box">
-            {featuredProducts.length ?
-                <div className="G-container">
-                    <div className="basket-products">
-                        {featuredProducts.map((item, index) => {
-                            return <div className="basket-products-item">
-                                <div style={{backgroundImage: `url(${item.img})`}}
-                                     className="basket-products-item-image G-image"></div>
-                                <div className="basket-products-item-name">
-                                    <p>{item.name}</p>
-                                    <p>{item.Color}</p>
-                                </div>
-                                <div className="basket-products-item-prise"><p>${item.prise}</p></div>
-                            </div>
-                        })}
-                        <div className="subtotal-box">
-                            <p>Subtotal</p>
-                            <p>$1000(testvi)</p>
-                        </div>
-                        <div className="shipping-box">
-                            <p>Subtotal</p>
-                            <p>Free(testvi)</p>
-                        </div>
-                        <div className="total-box">
-                            <p>Total</p>
-                            <span>USD $1,660.00(testvi)</span>
-                        </div>
-                    </div>
-                </div>
-
-
-                :
-                <div className="basket-empty">Empty list</div>}
-        </div>
     </div>
 }
 

@@ -154,38 +154,3 @@
   }
 }
 
-.catalog-item-info {
-  position: absolute;
-  color: white;
-  h3 {
-    margin: 20px 0;
-    font-size: $font-size-30;
-    max-width: 270px;
-    text-align: center;
-
-
-  }
-
-  p {
-    text-align: center;
-    font-size: $font-size-20;
-
-  }
-
-
-}
-.catalog-item-remove{
-  position: absolute;
-  color: white;
-  bottom: 10px;
-}
-.catalog-item-edit{
-   position: absolute;
-  top: 10px;
-  color: $blue;
-  transition: .3s;
-
-  &:hover{
-     color: $blueCheckoutHover;
-  }
-}

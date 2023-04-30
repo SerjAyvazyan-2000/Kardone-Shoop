@@ -50,15 +50,14 @@
 .catalog-pages {
   padding: 10px 0 0 0;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 1.2%;
 
 
 }
 
 .catalog-item {
-  width: 270px;
+  width: 19%;
   height: 330px;
   position: relative;
   cursor: pointer;
@@ -66,12 +65,23 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin: 0 0 1.2%;
+  @media screen and (max-width: 1053px) {
+    width: 24%;
+    height: 300px;
+
+
+  }
+  @media screen and (max-width: 801px) {
+    width: 32%;
+
+  }
+
   @media screen and (max-width: 589px) {
     width: 100%;
 
   }
 }
-
 .catalog-tem-bg {
   position: absolute;
   background-color: black;

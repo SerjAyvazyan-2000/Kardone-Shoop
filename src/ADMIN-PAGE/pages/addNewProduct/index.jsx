@@ -7,7 +7,7 @@ import MySelect from "../../../UI/mySelect";
 import MyButton from "../../../UI/myButton";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import axios from "axios";
+import axios, {get} from "axios";
 import {setCollection} from "../../../store/reducers/collection";
 import useValidateNewProduct from "./validateNewProduct";
 import AutoPartsImages from "./autoPartsImages";
@@ -25,11 +25,13 @@ const AddNewProduct = () => {
         setErrorText,
 
 
-    } = useValidateNewProduct()
+    } = useValidateNewProduct(location.state.carName)
     const [btnLoading, setBtnLoading] = useState(true)
+    const [btnUpdate, setBtnUpdate] = useState(true)
+    const [btnUpdating, setBtnUpdating] = useState(true)
+
     const collectionList = useSelector(state => state.Collection.collectionList)
     const dispatch = useDispatch()
-
 
     const optionListVendor = [
         {name: 'Armenia'},
@@ -57,17 +59,12 @@ const AddNewProduct = () => {
         getCollection()
     }, [])
 
-    useEffect(() => {
-        let localListParts = JSON.parse(localStorage.getItem("newAutoParts"))
-        if (localListParts) {
-            setNewAutoParts({...newAutoParts,productImages: localListParts.productImages})
-        }
-    }, [])
 
     const handelChange = (e) => {
-        setNewAutoParts({...newAutoParts, [e.target.name]: e.target.value})
-        setErrorText({...errorText, [e.target.name]: ''})
-        if (e.target.files !== null) {
+            setNewAutoParts({...newAutoParts, [e.target.name]: e.target.value})
+            setErrorText({...errorText, [e.target.name]: ''})
+
+        if (e.target.files) {
             const selectedImage = e.target.files[0];
             const reader = new FileReader();
             reader.onload = () => {
@@ -80,32 +77,19 @@ const AddNewProduct = () => {
         }
     }
 
-    const handelChangeSelect = (e, name) => {
-        if (name === "collectionList") {
-            collectionList.forEach((item, index) => {
-                if (index === +e.target.value) {
-                    setNewAutoParts({...newAutoParts, productType: item.name})
+    const handelChangeSelect = (name, nameOptionList) => {
+        if (nameOptionList === "collectionList") {
+                    setNewAutoParts({...newAutoParts, productType: name})
                     setErrorText({...errorText, productType: ''})
 
-                }
-            })
         }
-        if (name === "optionListVendor") {
-            optionListVendor.forEach((item, index) => {
-                if (index === +e.target.value) {
-                    setNewAutoParts({...newAutoParts, vendor: item.name})
+        if (nameOptionList === "optionListVendor") {
+                    setNewAutoParts({...newAutoParts, vendor: name})
                     setErrorText({...errorText, vendor: ''})
-                }
-            })
         }
-        if (name === 'optionListTags') {
-            optionListTags.forEach((item, index) => {
-                if (index === +e.target.value) {
-                    setNewAutoParts({...newAutoParts, productTags: item.name})
+        if (nameOptionList === 'optionListTags') {
+                    setNewAutoParts({...newAutoParts, productTags: name})
                     setErrorText({...errorText, productTags: ''})
-
-                }
-            })
         }
     }
 
@@ -114,18 +98,27 @@ const AddNewProduct = () => {
         newAutoParts.productImages.forEach((item, i) => {
             if (index === i) {
                 newAutoParts.productImages.splice(index, 1)
-                setNewAutoParts(newAutoParts)
-                localStorage.setItem("newAutoParts", JSON.stringify(newAutoParts))
-                window.location.reload()
-                // xndir unem UPDATE-I, stipvat @ndhanur ejy relod em anum
-            }
+                setNewAutoParts({...newAutoParts})
 
+                // localStorage.setItem("newAutoParts", JSON.stringify(newAutoParts))
+            }
         })
 
     }
-    // useEffect(()=>{
-    //     deletePartsImage()
-    // },[newAutoParts.productImages])
+
+    // stexa xndirsss chem karum uxarkem coolectianeri mej
+    // const setCollectionProduct = (product) => {
+    //      if(collectionList.length){
+    //          collectionList.forEach((item,index)=>{
+    //              if(item.name === newAutoParts.productType){
+    //                  item.productList.push(product)
+    //              }
+    //          })
+    //      }
+    // }
+    // stexa xndirsss chem karum uxarkem coolectianeri mej
+
+
     const createAutoParts = async () => {
         setBtnLoading(false)
         const result = await axios.post('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts', newAutoParts)
@@ -135,24 +128,53 @@ const AddNewProduct = () => {
             toast.success("the product has been shipped")
         }
     }
+    const updateAutoParts = async (id) => {
+        const body = newAutoParts
+        delete body._id
+        setBtnUpdating(false)
+        const result = await axios.put(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts/${id}`, body)
+        if(result){
+            await getCollection()
+            toast.success("Updating ok")
+            setBtnUpdating(true)
+        }
+    }
     const handleClick = async () => {
         if (validation()) {
-            await createAutoParts()
-            setNewAutoParts({
-                ...newAutoParts,
-                productTags: '',
-                price: '',
-                starPoints: '',
-                productName: '',
-                weight: '',
-                description: '',
-                vehicleType: '',
-            })
-            newAutoParts.productImages.forEach((item, index) => {
-                newAutoParts.productImages.splice(item, newAutoParts.productImages.length + 1)
-                localStorage.setItem("newAutoParts", JSON.stringify(newAutoParts))
-            })
-        }
+            if(location.state.editItem){
+                await updateAutoParts(newAutoParts._id)
+                setNewAutoParts({
+                    ...newAutoParts,
+                    productTags: '',
+                    price: '',
+                    starPoints: '',
+                    productName: '',
+                    weight: '',
+                    description: '',
+                    vehicleType: '',
+                })
+                newAutoParts.productImages.forEach((item, index) => {
+                    newAutoParts.productImages.splice(item, newAutoParts.productImages.length + 1)
+                })
+            }else {
+                await createAutoParts()
+                setNewAutoParts({
+                    ...newAutoParts,
+                    productTags: '',
+                    price: '',
+                    starPoints: '',
+                    productName: '',
+                    weight: '',
+                    description: '',
+                    vehicleType: '',
+                })
+                newAutoParts.productImages.forEach((item, index) => {
+                    newAutoParts.productImages.splice(item, newAutoParts.productImages.length + 1)
+                })
+
+            }
+            }
+
     }
     const buttonName = () => {
         let btnText = 'Save Collection'
@@ -161,18 +183,32 @@ const AddNewProduct = () => {
             btnText = "Loading..."
 
         }
+        if (btnUpdate === false) {
+            btnText = "Update"
+
+        }
+        if (btnUpdating === false) {
+            btnText = "Updating..."
+
+        }
         return btnText
     }
 
-
+    useEffect(()=>{
+        if(location.state.editItem){
+            setNewAutoParts(location.state.editItem)
+            setBtnUpdate(false)
+        }
+    },[])
     return <>
         <div className="add-new-product-section">
             <div className="add-product-header">
-                <p>{location.state ? location.state.carName : null}</p>  <i className="icon-arrow-right"></i> <span>Add New Product</span>
+                <p>{location.state ? location.state.carName : null}</p>  <i className="icon-arrow-right"></i>
+                <span>{location.state.editItem?  `Update Auto Parts` : "Add New Product" }</span>
             </div>
 
             <div className="add-product-box">
-                <div className="add-product-title"><p>Add New Product</p></div>
+                <div className="add-product-title"><p>{location.state.editItem?  `Update Auto Parts ` : "Add New Product" }</p></div>
 
                 <div className="add-product-tools-box">
                     <div className="product-tools-row-1">
@@ -264,7 +300,7 @@ const AddNewProduct = () => {
                                     defaultValue="Wheels & Tires"
                                     optionList={collectionList}
                                     onchange={handelChangeSelect}
-                                    name={"collectionList"}
+                                    nameOptionList={"collectionList"}
                                     errorText={errorText.productType}
 
                                 />
@@ -277,7 +313,7 @@ const AddNewProduct = () => {
                                     defaultValue={"Armenia"}
                                     optionList={optionListVendor}
                                     onchange={handelChangeSelect}
-                                    name={"optionListVendor"}
+                                    nameOptionList={"optionListVendor"}
                                     errorText={errorText.vendor}
 
 
@@ -312,7 +348,7 @@ const AddNewProduct = () => {
                                 defaultValue={"Coupe"}
                                 optionList={optionListTags}
                                 onchange={handelChangeSelect}
-                                name={"optionListTags"}
+                                nameOptionList={"optionListTags"}
                                 errorText={errorText.productTags}
 
                             />

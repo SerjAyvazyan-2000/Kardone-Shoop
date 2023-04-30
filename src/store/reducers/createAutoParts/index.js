@@ -3,20 +3,20 @@ import { createSlice } from '@reduxjs/toolkit'
 
 
 const initialState = {
-    BmwProductList:[]
+    autoPartsList:[]
 }
 
-const BmwAutoParts = createSlice({
+const CreateAutoParts = createSlice({
     name:"productList",
     initialState,
     reducers:{
         setProduct:(state,action) => {
-            state.BmwProductList = action.payload
+            state.autoPartsList = action.payload
         },
         deleteProduct :(state,action)=>{
-            state.BmwProductList.forEach((item,index)=>{
+            state.autoPartsList.forEach((item,index)=>{
                  if(item._id === action.payload){
-                    state.BmwProductList.splice(item._id,1)
+                    state.autoPartsList.splice(item._id,1)
                  }
             })
            // state.BmwProductList.filter(item => item._id !== action.payload)
@@ -25,5 +25,5 @@ const BmwAutoParts = createSlice({
     }
 })
 
-export const {setProduct,deleteProduct} = BmwAutoParts.actions
-export  default BmwAutoParts.reducer
+export const {setProduct,deleteProduct} = CreateAutoParts.actions
+export  default CreateAutoParts.reducer

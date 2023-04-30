@@ -2,11 +2,12 @@
 @import "src/assets/style/shablon";
 
 .product {
-  flex: 0 0 300px;
+  flex: 0 0 19%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   color: black;
+  margin: 0 0 20px;
 
 
   p {
@@ -20,6 +21,16 @@
 
   }
 
+  @media screen and (max-width: 1197px) {
+  flex: 0 0 24%;
+
+
+}
+  @media screen and (max-width: 869px) {
+    flex: 0 0 32%;
+
+
+  }
 
   @media screen and (max-width: 656px) {
     flex: 0 0 100%;

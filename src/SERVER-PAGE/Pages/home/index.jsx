@@ -10,13 +10,36 @@ import useSettings from "../../Components/slider-section/setings";
 import FeaturedProducts from "../../Components/Featured-products";
 import banner1 from "../../../assets/style/images/banner1.webp"
 import {NavLink} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ScrollTop from "../../Components/scrollTop";
+import axios from "axios";
+import LoaderBox from "../../Components/loaderBox";
+import {useDispatch, useSelector} from "react-redux";
+import {setProduct} from "../../../store/reducers/getAutoParts";
 
 const Home = () => {
-    let {homeSliderInfo, featuredProducts} = useInformation()
-    let {settings} = useSettings()
+    let {homeSliderInfo} = useInformation()
+    const [featuredProducts, setFeaturedProducts] = useState([])
+    const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch()
 
+
+    let {settings} = useSettings()
+    const getAutoParts = async () => {
+        setLoading(true)
+        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts')
+        if (result.data) {
+            // dispatch(setProduct(result.data))
+            setLoading(false)
+            let newData = result.data.filter((item,index)=>{
+              return index < 6
+            })
+            setFeaturedProducts(newData)
+        }
+    }
+    useEffect(() => {
+        getAutoParts()
+    }, [])
     return <>
         <Header/>
         <main className="home-section">
@@ -45,7 +68,7 @@ const Home = () => {
                             return <FeaturedProducts item={item} key={index}/>
                         }) : null}
                     </div>
-                        : <div>EMPTY LIST</div>}
+                        : <LoaderBox loading={loading}/>}
                 </div>
             </section>
             <section className="section-about">

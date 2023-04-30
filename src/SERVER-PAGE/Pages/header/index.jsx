@@ -1,22 +1,43 @@
 import "./stle.scss"
 import logo from "../../../assets/style/images/logo.png"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link, NavLink, Outlet} from "react-router-dom";
 import useInformation from "../../../hooks/test-information";
+import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {setProduct} from "../../../store/reducers/basketProduct";
 
 
 const Header = () => {
-    const {catalog} = useInformation()
     const [openMenu,setOpenMenu] = useState(false)
+    const basketList = useSelector(state => state.BasketProduct.basketList)
+    const dispatch = useDispatch()
+
 
     const [subMenu, setSubMenu] = useState(false)
     const openSubMenu = () => {
         setSubMenu(!subMenu)
     }
+    // useEffect(() => {
+    //     const localWentList =  JSON.parse(localStorage.getItem('wentBasket'))
+    //     if(localWentList){
+    //         dispatch(setProduct(localWentList))
+    //     }
+    // },[])
     const burgerMenu = () =>{
         setOpenMenu(!openMenu)
     }
+    const [catalog, setCatalog] = useState([])
 
+    const getCatalog = async () => {
+        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection')
+        if (result.data) {
+            setCatalog(result.data)
+        }
+    }
+    useEffect(() => {
+        getCatalog()
+    })
     return <header className="header-section">
         <div className="header-content-row-1">
             <div className="G-container">
@@ -37,7 +58,7 @@ const Header = () => {
                                 </label>
                             </li>
                             <li className="basket-navigation">
-                                <NavLink to="/basket"><i className="icon-cart"></i></NavLink>
+                                <NavLink to="/basket"><i className="icon-cart"></i><span>{basketList.length}</span></NavLink>
                             </li>
                         </ul>
                     </div>

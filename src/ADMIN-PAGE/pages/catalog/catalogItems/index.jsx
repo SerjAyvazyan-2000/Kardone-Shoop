@@ -23,7 +23,7 @@ const CatalogItems = ({item}) => {
              className="catalog-parts-item G-image">
             <div className="catalog-tem-bg"></div>
             <div className="catalog-item-info ">
-                <h3>{item.name}</h3>
+                <h4>{item.name}</h4>
                 <p>{collectionRedux.length} Products</p>
             </div>
             <div className="catalog-item-remove">

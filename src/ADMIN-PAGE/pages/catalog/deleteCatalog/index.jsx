@@ -13,6 +13,7 @@ const DeleteCollection = ({name, onClose, id}) => {
     const deleteCollectionRedux = async () => {
         dispatch(deleteCollection(id))
         await deleteCollectionCrud()
+        onClose()
 
     }
     const btnDeleteText = () => {
@@ -24,14 +25,12 @@ const DeleteCollection = ({name, onClose, id}) => {
 
     }
 
-
     const deleteCollectionCrud = async () => {
         setBtnDelete(false)
         const result = await axios.delete(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection/${id}`)
         if (result) {
             setBtnDelete(true)
         }
-
 
     }
 

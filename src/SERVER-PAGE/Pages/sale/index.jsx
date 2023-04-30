@@ -1,18 +1,51 @@
 import "./style.scss"
 import Header from "../header";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {Link, NavLink, useLocation} from 'react-router-dom'
 import useInformation from "../../../hooks/test-information";
 import ScrollTop from "../../Components/scrollTop";
+import axios from "axios";
+import LoaderBox from "../../Components/loaderBox";
+import EmptyList from "../../Components/emptyList";
 
 
 const Sale = () => {
-    const {featuredProducts} = useInformation()
     const [activeNav, setActiveNav] = useState("")
     const [activeIcon, setActiveIcon] = useState("")
-
-
+    const [autoParts, setAutoParts] = useState([])
+    const [loadingParts, setLoadingParts] = useState(false)
     let location = useLocation();
+    const getAutoParts = async () => {
+        setLoadingParts(true)
+        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts')
+        if (result.data) {
+            if(!location.state){
+                let newList = result.data.filter((item,index)=>{
+                    return index < 10
+                })
+                setAutoParts(newList)
+                setLoadingParts(false)
+
+
+            }else {
+                let newList = result.data.filter(item => item.productType === location.state.name)
+                setAutoParts(newList)
+                setLoadingParts(false)
+            }
+
+
+        }
+    }
+    useEffect(() => {
+        getAutoParts()
+    },[])
+    useEffect(() => {
+        if(location.state){
+            getAutoParts()
+        }
+
+    },[location.state])
+
 
     const filterProducts = (name) => {
         if (name === 'all') {
@@ -53,7 +86,8 @@ const Sale = () => {
             <div className="sale-header">
                 <div className="G-container">
                     <div className="sale-header-text">
-                        <h4><NavLink to={"/home"}>HOME</NavLink>  <i className="icon-arrow-right"></i> <NavLink to={"/catalog"}>COLLECTIONS</NavLink> <i
+                        <h4><NavLink to={"/home"}>HOME</NavLink> <i className="icon-arrow-right"></i> <NavLink
+                            to={"/catalog"}>COLLECTIONS</NavLink> <i
                             className="icon-arrow-right"></i><span>
                             {!location.state ? "Exterior" : location.state.name}
                         </span></h4>
@@ -134,54 +168,64 @@ const Sale = () => {
                         </div>
                     </div>
                 </div>
-                {featuredProducts.length ?
+                {!loadingParts ?
                     <>
-                    <div className="sale-products-list">
-                        {featuredProducts.map((item, index) => {
-                            return <div className="sale-products-item ">
-                                <Link to={`/product/${item.id}`}
-                                      // state={{name: item.name, categories: item.categories}}
-                                      className="item-products-image G-image"
-                                      style={{backgroundImage: `url(${item.img})`}}>
+                        {autoParts.length ?
+                            <>
+                                <div className="sale-products-list">
+                                    {autoParts.map((item, index) => {
+                                        return <div className="sale-products-item ">
+                                            <Link to={`/product/${item._id}`}
+                                                // state={{name: item.name, categories: item.categories}}
+                                                  className="item-products-image G-image"
+                                            >
+                                                {item.productImages.length ?
+                                                     <div className="product-images" style={{backgroundImage: `url(${item.productImages[0]})`}}></div>
+                                                    : null}
+                                                <div className="item-products-info">
+                                                    <p>{item.productName}</p>
+                                                    <p>{item.price}$</p>
+                                                    <button>Add To Cart <span className="icon-cart"></span></button>
+                                                </div>
 
-                                </Link>
-                                <div className="item-products-info">
-                                    <p>{item.name}</p>
-                                    <p>{item.prise}$</p>
-                                    <button>Add To Cart <span className="icon-cart"></span></button>
-                                </div>
+                                            </Link>
 
 
-                            </div>
-                        })}
-
-                    </div>
-                        <div className="products-API-select">
-                             <div className="G-container">
-                                  <div className="products-select-box">
-                                        <div className="products-length">
-                                             <p>
-                                                 of 1 – 8 product(s)    {featuredProducts.length} -es cuyc em talis qanaky
-                                             </p>
                                         </div>
-                                       <div className="products-Api-count">
-                                            <p>
+                                    })}
 
-                                                <span><i className="icon-arrow-left"></i> Previous</span>
-                                                <span>1</span>
-                                                <span>2</span>
-                                                <span>Next  <i className="icon-arrow-right"></i></span>
+                                </div>
+                                <div className="products-API-select">
+                                    <div className="G-container">
+                                        <div className="products-select-box">
+                                            <div className="products-length">
+                                                <p>
+                                                    of 1 – 8 product(s) {autoParts.length} -es cuyc em talis qanaky
+                                                </p>
+                                            </div>
+                                            <div className="products-Api-count">
+                                                <p>
+
+                                                    <span><i className="icon-arrow-left"></i> Previous</span>
+                                                    <span>1</span>
+                                                    <span>2</span>
+                                                    <span>Next  <i className="icon-arrow-right"></i></span>
 
 
-                                            </p>
-                                       </div>
-                                  </div>
-                             </div>
-                        </div>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+
+
+                            : <EmptyList/>}
+
                     </>
 
+                    : <LoaderBox loading={loadingParts}/>}
 
-                    : <div>Empty list</div>}
 
             </div>
 

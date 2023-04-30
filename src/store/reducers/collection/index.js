@@ -14,11 +14,8 @@ const Collection = createSlice({
        state.collectionList = action.payload
       },
       deleteCollection:(state,action) =>{
-         state.collectionList.forEach((item,index)=>{
-             if(item._id === action.payload){
-                  state.collectionList.splice(item._id ,1)
-             }
-         })
+          let newList = state.collectionList.filter(item => item._id !== action.payload)
+          state.collectionList = newList
       },
     }
 })
