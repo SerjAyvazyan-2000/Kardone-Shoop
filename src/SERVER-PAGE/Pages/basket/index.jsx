@@ -1,6 +1,6 @@
 import "./style.scss"
 import Header from "../header";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import React, {useEffect, useState} from "react";
 import Counter from "./counter";
 import ScrollTop from "../../Components/scrollTop";
@@ -34,7 +34,6 @@ const Basket = () => {
     useEffect(()=>{
         let price = 0
         let weight = 0
-
         if(basketList.length){
               basketList.forEach((item,index)=>{
                   price += +item.price

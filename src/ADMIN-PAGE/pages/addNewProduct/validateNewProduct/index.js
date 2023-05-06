@@ -7,7 +7,7 @@ import testImage1 from "../../../../assets/style/images/banner.webp"
 const useValidateNewProduct = (carName) => {
 
     const [newAutoParts, setNewAutoParts] = useState({
-        productName: '',
+        name: '',
         description: '',
         productImages: [],
         price: '',
@@ -21,7 +21,7 @@ const useValidateNewProduct = (carName) => {
     })
 
     const [errorText, setErrorText] = useState({
-        productName: '',
+        name: '',
         description: '',
         productImages: '',
         price: '',
@@ -37,7 +37,7 @@ const useValidateNewProduct = (carName) => {
     const validation = () => {
         let validate = true
         let errorString = {
-            productName: '',
+            name: '',
             description: '',
             productImages: '',
             price: '',
@@ -48,8 +48,8 @@ const useValidateNewProduct = (carName) => {
             productTags: '',
             vehicleType: '',
         }
-        if (!newAutoParts.productName.trim().length) {
-            errorString.productName = "Fill in the required product name"
+        if (!newAutoParts.name.trim().length) {
+            errorString.name = "Fill in the required product name"
             validate = false
 
         }

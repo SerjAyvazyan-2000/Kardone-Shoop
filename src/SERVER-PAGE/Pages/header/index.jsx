@@ -2,7 +2,7 @@ import "./stle.scss"
 import logo from "../../../assets/style/images/logo.png"
 import React, {useEffect, useState} from "react";
 import {Link, NavLink, Outlet} from "react-router-dom";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {setProduct} from "../../../store/reducers/basketProduct";

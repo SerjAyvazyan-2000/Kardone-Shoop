@@ -1,5 +1,5 @@
 import "./style.scss"
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import AutoParts from "../autoParts";
 import axios from "axios";
 import {setProduct} from "../../../store/reducers/createAutoParts";

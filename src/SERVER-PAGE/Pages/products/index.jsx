@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import React, {useEffect, useState} from "react";
 import {NavLink, useLocation, useParams} from "react-router-dom";
 import featuredProducts from "../../Components/Featured-products";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import product3 from "../../../assets/style/images/product3.avif";
 import Counter from "../basket/counter";
 import axios from "axios";

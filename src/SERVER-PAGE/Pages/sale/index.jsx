@@ -2,11 +2,12 @@ import "./style.scss"
 import Header from "../header";
 import React, {useEffect, useMemo, useState} from "react";
 import {Link, NavLink, useLocation} from 'react-router-dom'
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import ScrollTop from "../../Components/scrollTop";
 import axios from "axios";
 import LoaderBox from "../../Components/loaderBox";
 import EmptyList from "../../Components/emptyList";
+import useAutoPartsServices from "../../../ADMIN-PAGE/API/autoPartsServices";
 
 
 const Sale = () => {
@@ -17,10 +18,10 @@ const Sale = () => {
     let location = useLocation();
     const getAutoParts = async () => {
         setLoadingParts(true)
-        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts')
-        if (result.data) {
+        const result = await useAutoPartsServices.getAutoParts()
+        if (result) {
             if(!location.state){
-                let newList = result.data.filter((item,index)=>{
+                let newList = result.filter((item,index)=>{
                     return index < 10
                 })
                 setAutoParts(newList)
@@ -28,7 +29,7 @@ const Sale = () => {
 
 
             }else {
-                let newList = result.data.filter(item => item.productType === location.state.name)
+                let newList = result.filter(item => item.productType === location.state.name)
                 setAutoParts(newList)
                 setLoadingParts(false)
             }

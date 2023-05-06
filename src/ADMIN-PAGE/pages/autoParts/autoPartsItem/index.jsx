@@ -10,6 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteProduct} from "../../../../store/reducers/createAutoParts";
 import axios from "axios";
 import {setEditParts} from "../../../../store/reducers/editAutoParts";
+import Loader from "../../../../UI/loader/loader";
 
 const AutoPartsItem = ({carName, autoPartsList, loading,starsList,deleteAutoParts,btnDeleteID}) => {
     const editAutoParts = useSelector(state => state.EditAutoParts.editAutoParts)
@@ -17,8 +18,6 @@ const AutoPartsItem = ({carName, autoPartsList, loading,starsList,deleteAutoPart
   const handleEdit = ( element) => {
       dispatch(setEditParts(element))
   }
-
-
 
 
     return <>
@@ -44,7 +43,7 @@ const AutoPartsItem = ({carName, autoPartsList, loading,starsList,deleteAutoPart
 
                                 <div className="auto-parts-information">
                                     <div className="parts-name-box">
-                                        <p>{element.productName}</p>
+                                        <p>{element.name}</p>
                                     </div>
                                     <div className="parts-prise-sale-box">
                                         <div className="parts-sales"><p> Sales</p></div>
@@ -93,7 +92,10 @@ const AutoPartsItem = ({carName, autoPartsList, loading,starsList,deleteAutoPart
 
                 </>
 
-                : <div>Loading...</div>}
+                : <div className="autoParts-loader-box">
+                     <Loader/>
+                </div>
+            }
 
         </div>
     </>

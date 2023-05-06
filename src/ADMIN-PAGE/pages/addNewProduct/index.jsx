@@ -13,6 +13,8 @@ import useValidateNewProduct from "./validateNewProduct";
 import AutoPartsImages from "./autoPartsImages";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import useAutoPartsServices from "../../API/autoPartsServices";
+import useCollectionServices from "../../API/collectionServices";
 
 
 const AddNewProduct = () => {
@@ -48,9 +50,9 @@ const AddNewProduct = () => {
     ]
 
     const getCollection = async () => {
-        const result = axios.get(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection`)
-        if ((await result).data) {
-            dispatch(setCollection((await result).data))
+        const result = await useCollectionServices.getCollection()
+        if (result) {
+            dispatch(setCollection(result))
         }
 
     }
@@ -59,10 +61,9 @@ const AddNewProduct = () => {
         getCollection()
     }, [])
 
-
     const handelChange = (e) => {
-            setNewAutoParts({...newAutoParts, [e.target.name]: e.target.value})
-            setErrorText({...errorText, [e.target.name]: ''})
+        setNewAutoParts({...newAutoParts, [e.target.name]: e.target.value})
+        setErrorText({...errorText, [e.target.name]: ''})
 
         if (e.target.files) {
             const selectedImage = e.target.files[0];
@@ -79,17 +80,17 @@ const AddNewProduct = () => {
 
     const handelChangeSelect = (name, nameOptionList) => {
         if (nameOptionList === "collectionList") {
-                    setNewAutoParts({...newAutoParts, productType: name})
-                    setErrorText({...errorText, productType: ''})
+            setNewAutoParts({...newAutoParts, productType: name})
+            setErrorText({...errorText, productType: ''})
 
         }
         if (nameOptionList === "optionListVendor") {
-                    setNewAutoParts({...newAutoParts, vendor: name})
-                    setErrorText({...errorText, vendor: ''})
+            setNewAutoParts({...newAutoParts, vendor: name})
+            setErrorText({...errorText, vendor: ''})
         }
         if (nameOptionList === 'optionListTags') {
-                    setNewAutoParts({...newAutoParts, productTags: name})
-                    setErrorText({...errorText, productTags: ''})
+            setNewAutoParts({...newAutoParts, productTags: name})
+            setErrorText({...errorText, productTags: ''})
         }
     }
 
@@ -100,31 +101,17 @@ const AddNewProduct = () => {
                 newAutoParts.productImages.splice(index, 1)
                 setNewAutoParts({...newAutoParts})
 
-                // localStorage.setItem("newAutoParts", JSON.stringify(newAutoParts))
             }
         })
 
     }
 
-    // stexa xndirsss chem karum uxarkem coolectianeri mej
-    // const setCollectionProduct = (product) => {
-    //      if(collectionList.length){
-    //          collectionList.forEach((item,index)=>{
-    //              if(item.name === newAutoParts.productType){
-    //                  item.productList.push(product)
-    //              }
-    //          })
-    //      }
-    // }
-    // stexa xndirsss chem karum uxarkem coolectianeri mej
-
-
     const createAutoParts = async () => {
         setBtnLoading(false)
-        const result = await axios.post('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts', newAutoParts)
-        if (result.data) {
+        const result = await useAutoPartsServices.createAutoParts(newAutoParts)
+        if (result) {
             setBtnLoading(true)
-           await getCollection()
+            await getCollection()
             toast.success("the product has been shipped")
         }
     }
@@ -132,23 +119,21 @@ const AddNewProduct = () => {
         const body = newAutoParts
         delete body._id
         setBtnUpdating(false)
-        const result = await axios.put(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts/${id}`, body)
-        if(result){
-            await getCollection()
-            toast.success("Updating ok")
-            setBtnUpdating(true)
-        }
+        const result = await useAutoPartsServices.updateAutoParts(id, body)
+        await getCollection()
+        toast.success("Updating ok")
+        setBtnUpdating(true)
     }
     const handleClick = async () => {
         if (validation()) {
-            if(location.state.editItem){
+            if (location.state.editItem) {
                 await updateAutoParts(newAutoParts._id)
                 setNewAutoParts({
                     ...newAutoParts,
                     productTags: '',
                     price: '',
                     starPoints: '',
-                    productName: '',
+                    name: '',
                     weight: '',
                     description: '',
                     vehicleType: '',
@@ -156,14 +141,15 @@ const AddNewProduct = () => {
                 newAutoParts.productImages.forEach((item, index) => {
                     newAutoParts.productImages.splice(item, newAutoParts.productImages.length + 1)
                 })
-            }else {
+            } else {
                 await createAutoParts()
+                // setProductCollection(newAutoParts)
                 setNewAutoParts({
                     ...newAutoParts,
                     productTags: '',
                     price: '',
                     starPoints: '',
-                    productName: '',
+                    name: '',
                     weight: '',
                     description: '',
                     vehicleType: '',
@@ -173,8 +159,7 @@ const AddNewProduct = () => {
                 })
 
             }
-            }
-
+        }
     }
     const buttonName = () => {
         let btnText = 'Save Collection'
@@ -194,21 +179,36 @@ const AddNewProduct = () => {
         return btnText
     }
 
-    useEffect(()=>{
-        if(location.state.editItem){
+    useEffect(() => {
+        if (location.state.editItem) {
             setNewAutoParts(location.state.editItem)
             setBtnUpdate(false)
         }
-    },[])
+    }, [])
+
+    // const updateCollection = async (id) => {
+    //      const result = await useCollectionServices.updateCollection(id)
+    //     console.log(result,"fsyo update exav")
+    // }
+    // function setProductCollection (newAutoParts) {
+    //     collectionList.forEach((item,index)=>{
+    //          if(item.name === newAutoParts.productType){
+    //             item.productList.push(newAutoParts)
+    //              updateCollection(item._id)
+    //          }
+    //     })
+    // }
+
     return <>
         <div className="add-new-product-section">
             <div className="add-product-header">
                 <p>{location.state ? location.state.carName : null}</p>  <i className="icon-arrow-right"></i>
-                <span>{location.state.editItem?  `Update Auto Parts` : "Add New Product" }</span>
+                <span>{location.state.editItem ? `Update Auto Parts` : "Add New Product"}</span>
             </div>
 
             <div className="add-product-box">
-                <div className="add-product-title"><p>{location.state.editItem?  `Update Auto Parts ` : "Add New Product" }</p></div>
+                <div className="add-product-title">
+                    <p>{location.state.editItem ? `Update Auto Parts ` : "Add New Product"}</p></div>
 
                 <div className="add-product-tools-box">
                     <div className="product-tools-row-1">
@@ -216,10 +216,10 @@ const AddNewProduct = () => {
                             <MyInput
                                 nameText={"Product Name"}
                                 placeholder={"Enter product name"}
-                                nameInput={"productName"}
+                                nameInput={"name"}
                                 onchange={handelChange}
-                                value={newAutoParts.productName}
-                                errorText={errorText.productName}
+                                value={newAutoParts.name}
+                                errorText={errorText.name}
 
                             />
                         </div>
@@ -297,36 +297,24 @@ const AddNewProduct = () => {
                             <div className="select-product-type">
                                 <p>Product Type</p>
                                 <MySelect
-                                    defaultValue="Wheels & Tires"
+                                    defaultValue="Product Type"
                                     optionList={collectionList}
                                     onchange={handelChangeSelect}
                                     nameOptionList={"collectionList"}
                                     errorText={errorText.productType}
-
                                 />
-
                             </div>
 
                             <div className="select-vendor-type">
                                 <p>Vendor</p>
                                 <MySelect
-                                    defaultValue={"Armenia"}
+                                    defaultValue="Country"
                                     optionList={optionListVendor}
                                     onchange={handelChangeSelect}
                                     nameOptionList={"optionListVendor"}
                                     errorText={errorText.vendor}
-
-
                                 />
-
                             </div>
-                            {/*<div className="select-collection-type">*/}
-                            {/*    <p>Collection</p>*/}
-                            {/*    <MySelect*/}
-                            {/*         optionList={collectionList}*/}
-                            {/*        defaultValue={"Collection"}*/}
-                            {/*    />*/}
-                            {/*</div>*/}
 
 
                         </div>

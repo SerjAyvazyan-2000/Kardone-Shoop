@@ -11,6 +11,8 @@ import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {editCollection, setCollection} from "../../../store/reducers/collection";
 import 'react-toastify/dist/ReactToastify.css';
+import usePartsCollectionServices from "../../API/collectionServices";
+import useCollectionServices from "../../API/collectionServices";
 
 
 const AddNewCollection = ({onClose, editItem}) => {
@@ -18,10 +20,7 @@ const AddNewCollection = ({onClose, editItem}) => {
     const [btnLoading, setBtnLoading] = useState(true)
     const [btnUpdate, setBtnUpdate] = useState(true)
     const [btnUpdateStart, setBtnUpdateStart] = useState(true)
-
-
     const dispatch = useDispatch()
-
     const [newCollection, setNewCollection] = useState({
         name: '',
         img: null,
@@ -31,6 +30,8 @@ const AddNewCollection = ({onClose, editItem}) => {
         name: '',
         img: ''
     })
+
+
     const validation = () => {
         let validate = true
         const errorString = {
@@ -61,37 +62,32 @@ const AddNewCollection = ({onClose, editItem}) => {
         }
 
     }
-
     const createCollection = async () => {
         setBtnLoading(false)
-        const result = await axios.post('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection', newCollection)
-        if (result.data) {
+        const result = await useCollectionServices.createCollection(newCollection)
+        if (result) {
             setBtnLoading(true)
-
             await getCollection()
         }
-
     }
     const upDateCollection = async (id) => {
         const body = newCollection
         delete body._id
         setBtnUpdateStart(false)
-        const result = await axios.put(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection/${id}`, body)
+        const result = await useCollectionServices.updateCollection(id,body)
         if (result) {
             await getCollection()
             setBtnUpdateStart(true)
         }
-
     }
     const getCollection = async () => {
-        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection')
-        if (result.data) {
-            dispatch(setCollection(result.data))
+        setBtnLoading(false)
+        const result = await useCollectionServices.getCollection()
+        if (result) {
+            dispatch(setCollection(result))
             setBtnLoading(true)
-
         }
     }
-
     const saveCollection = async () => {
         if (validation()) {
             if (editItem) {
@@ -107,7 +103,6 @@ const AddNewCollection = ({onClose, editItem}) => {
 
         }
     }
-
     useEffect(() => {
         if (editItem !== undefined) {
             setNewCollection(editItem)
@@ -153,7 +148,6 @@ const AddNewCollection = ({onClose, editItem}) => {
                         <span className="upload-icon">{<FaCloudUploadAlt/>}</span>
                         <p>{errorText.img}</p>
                     </div>
-                    {/*UPLOAD ARAT NKARNERNA LINELU*/}
                     {newCollection.img !== null ?
                         <div className="upload-images-box">
                             {newCollection.img &&

@@ -1,6 +1,6 @@
 import "./style.scss"
 import {useState} from "react";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import useSettings from "../slider-section/setings";
 
 

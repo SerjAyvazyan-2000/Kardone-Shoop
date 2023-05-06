@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Header from "../header";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import WelcomeSection from "../../Components/welcome-section";
 import SliderSection from "../../Components/slider-section";
 import useSettings from "../../Components/slider-section/setings";
@@ -16,6 +16,8 @@ import axios from "axios";
 import LoaderBox from "../../Components/loaderBox";
 import {useDispatch, useSelector} from "react-redux";
 import {setProduct} from "../../../store/reducers/getAutoParts";
+import useAutoPartsServices from "../../../ADMIN-PAGE/API/autoPartsServices";
+import Loader from "../../../UI/loader/loader";
 
 const Home = () => {
     let {homeSliderInfo} = useInformation()
@@ -27,11 +29,11 @@ const Home = () => {
     let {settings} = useSettings()
     const getAutoParts = async () => {
         setLoading(true)
-        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts')
-        if (result.data) {
+        const result = await useAutoPartsServices.getAutoParts()
+        if (result) {
             // dispatch(setProduct(result.data))
             setLoading(false)
-            let newData = result.data.filter((item,index)=>{
+            let newData = result.filter((item,index)=>{
               return index < 6
             })
             setFeaturedProducts(newData)
@@ -68,7 +70,10 @@ const Home = () => {
                             return <FeaturedProducts item={item} key={index}/>
                         }) : null}
                     </div>
-                        : <LoaderBox loading={loading}/>}
+                        : <div className="home-loader">
+                            <LoaderBox loading={loading}/>
+                             <Loader/>
+                        </div>}
                 </div>
             </section>
             <section className="section-about">

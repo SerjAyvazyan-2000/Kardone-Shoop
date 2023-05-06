@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react";
 import "./style.scss"
 import Header from "../header";
 import ScrollTop from "../../Components/scrollTop";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import {Link, NavLink} from "react-router-dom";
 import axios from "axios";
 import LoaderBox from "../../Components/loaderBox";
 import {useSelector} from "react-redux";
+import EmptyList from "../../Components/emptyList";
 
 
 const Catalog = () => {
@@ -28,14 +29,14 @@ const Catalog = () => {
 
         }
     }
-    // const handleAutoPartsCount = () => {
-    //     if(catalog.length){
-    //         catalog.forEach((element,index)=>{
-    //             let newList = autoParts.filter(item => item.productType === element.name)
-    //
-    //         })
-    //     }
-    // }
+    const handleAutoPartsCount = () => {
+        if(catalog.length){
+            catalog.forEach((element,index)=>{
+                let newList = autoParts.filter(item => item.productType === element.name)
+
+            })
+        }
+    }
 
     const getCatalog = async () => {
         setLoading(true)
@@ -91,7 +92,7 @@ const Catalog = () => {
                             })}
                         </div>
 
-                    : <div>EMPTY LIST</div>}
+                    : <EmptyList/>}
 
 
 

@@ -10,49 +10,37 @@ import {useDispatch} from "react-redux";
 import {deleteProduct, setProduct} from "../../../store/reducers/createAutoParts";
 import axios from "axios";
 import AutoPartsItem from "./autoPartsItem";
+import useAutoPartsServices from "../../API/autoPartsServices";
+import {useProducts} from "../../../hooks/useSortProducts";
 
 const AutoParts = ({carName, autoPartsList, loading}) => {
     const dispatch = useDispatch()
     const [starsList, setStartsList] = useState([])
     const [btnDeleteID, setBtnDeleteID] = useState('')
     const [search, setSearch] = useState('')
-    const [sortValue,setSortValue] = useState('')
+    const [sortAndSearch, setSortAndSearch] = useState({
+        sort:'',
+        query:''
+    })
+    // const sortedAndSearchedList = useProducts(autoPartsList,sortAndSearch.sort,sortAndSearch.query)
 
-
-
-    const optionListSort = [
-        {value: 'productName',name:'Name', id: 1},
-        {value: 'productTags',name:'Tags', id: 1},
-
-    ]
     const deleteAutoParts = async (id) => {
         setBtnDeleteID(id)
-        const result = await axios.delete(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts/${id}`)
-        if (result) {
-            setBtnDeleteID('')
-            dispatch(deleteProduct(id))
-        }
+        const result = await useAutoPartsServices.deleteAutoParts(id)
+        setBtnDeleteID('')
+        dispatch(deleteProduct(id))
 
     }
-    useEffect(()=>{
-        if(search){
-            let newList =  autoPartsList.filter(item => item.productName.includes(search))
-            dispatch(setProduct(newList))
+
+    const sortedAndSearchedList =  useMemo(() => {
+        if (sortAndSearch.sort) {
+            return [...autoPartsList].sort((a, b) => a[sortAndSearch.sort].localeCompare(b[sortAndSearch.sort]))
         }
-    },[search])
-
-    useMemo(()=>{
-         if(sortValue){
-             let newSortList = [...autoPartsList].sort((a,b)=>a[sortValue].localeCompare(b[sortValue]))
-             dispatch(setProduct(newSortList))
-         }
-    },[sortValue])
-
-    const handleSort = (sort) => {
-        setSortValue(sort)
-
-
-    }
+        if(sortAndSearch.query){
+            return  autoPartsList.filter(item => item.name.includes(sortAndSearch.query))
+        }
+        return autoPartsList
+    }, [sortAndSearch.sort,autoPartsList,sortAndSearch.query])
 
 
 
@@ -71,27 +59,32 @@ const AutoParts = ({carName, autoPartsList, loading}) => {
                 </div>
                 <div className="filter-parts-box">
                     <div className="search-filter">
-                        <CostumersInput onchange={(e)=>setSearch(e.target.value)} placeholder="Search Here"/>
+                        <CostumersInput
+                            onchange={(e) => setSortAndSearch({...sortAndSearch,query: e.target.value})}
+                            placeholder="Search Here"
+                        />
                         <span className="icon-search"></span>
                     </div>
                     <div className="sort-select-box">
                         <MySelect
                             defaultValue={"Sort by"}
-                            optionList={optionListSort}
-                            onchange={handleSort}
-                            value={sortValue}
+                            optionList={[
+                                {value: 'name', name: 'Name', id: 1},
+                                {value: 'productTags', name: 'Tags', id: 2},
+                            ]}
+                            onchange={(sort)=>setSortAndSearch({...sortAndSearch,sort: sort})}
+                            value={sortAndSearch.sort}
 
                         />
                     </div>
 
                 </div>
-
             </div>
             <AutoPartsItem starsList={starsList}
                            deleteAutoParts={deleteAutoParts}
                            loading={loading}
                            carName={carName}
-                           autoPartsList={autoPartsList}
+                           autoPartsList={sortedAndSearchedList}
                            btnDeleteID={btnDeleteID}
             />
 

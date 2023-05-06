@@ -1,11 +1,12 @@
 import "./style.scss"
 import AutoParts from "../autoParts";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import axios from "axios";
 import {setCollection} from "../../../store/reducers/collection";
 import {useDispatch, useSelector} from "react-redux";
 import {setProduct} from "../../../store/reducers/createAutoParts";
 import {useEffect, useState} from "react";
+import useAutoPartsServices from "../../API/autoPartsServices";
 
 const Bmw = () => {
     const {featuredProducts} = useInformation()
@@ -13,18 +14,18 @@ const Bmw = () => {
     const [loading,setLoading] = useState(false)
 
     const dispatch = useDispatch()
-    const getCollection = async () => {
+    const getAutoParts = async () => {
         setLoading(true)
-        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts')
-        if (result.data) {
-           let newResult =  result.data.filter(item => item.vehicleType === "BMW")
+        const result = await useAutoPartsServices.getAutoParts()
+        if (result) {
+           let newResult =  result.filter(item => item.vehicleType === "BMW")
             dispatch(setProduct(newResult))
             setLoading(false)
 
         }
     }
     useEffect(() => {
-        getCollection()
+        getAutoParts()
     }, [])
 
     return <div className="bmw-section">

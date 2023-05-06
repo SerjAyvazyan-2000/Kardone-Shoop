@@ -2,7 +2,7 @@ import "./style.scss"
 import {Link, NavLink} from "react-router-dom";
 import CostumersInput from "../../../UI/MyInput";
 import MySelect from "../../../UI/mySelect";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import EmptyList from "../emptyList";
 import React, {useEffect, useMemo, useState} from "react";
 import MyModal from "../../../UI/myModal";
@@ -11,53 +11,44 @@ import AddNewCollection from "../addNewCollection";
 import axios from "axios";
 import MyButton from "../../../UI/myButton";
 import {useDispatch, useSelector} from "react-redux";
-import { setCollection} from "../../../store/reducers/collection";
+import {setCollection} from "../../../store/reducers/collection";
 import DeleteProduct from "./deleteCatalog";
 import DeleteCollection from "./deleteCatalog";
 import CatalogItems from "./catalogItems";
 import {setProduct} from "../../../store/reducers/createAutoParts";
+import usePartsCollectionServices from "../../API/collectionServices";
+import Loader from "../../../UI/loader/loader";
+import {useFetching} from "../../../hooks/useFetching";
+import {useProducts} from "../../../hooks/useSortProducts";
+import useCollectionServices from "../../API/collectionServices";
+import useAutoPartsServices from "../../API/autoPartsServices";
 
 const Collections = () => {
     const collectionRedux = useSelector(state => state.Collection.collectionList)
     const dispatch = useDispatch()
     const [openModal, setOpenModal] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [sortValue,setSortValue] = useState('')
+    const [sortAndSearch, setSortAndSearch] = useState({
+        sort: '',
+        query: ''
+
+    })
+    const [autoPartsList,setAutoPartsList] = useState([])
+    const sortedAndSearchedProductList =  useProducts(collectionRedux,sortAndSearch.sort,sortAndSearch.query)
+
+    const {fetching, loading, error} = useFetching(async () => {
+        const result = await useCollectionServices.getCollection()
+        dispatch(setCollection(result))
+    })
+
+    useEffect(() => {
+        fetching()
+    }, [])
 
 
-
-    const optionListSort = [
-        {value: 'name',name:'Name', id: 1},
-        {value: 'img',name:'count', id: 1},
-
-
-    ]
 
     const handleClick = () => {
         setOpenModal(!openModal)
     }
-    const getCollection = async () => {
-        setLoading(true)
-        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection')
-         if(result.data){
-             setLoading(false)
-             dispatch(setCollection(result.data))
-         }
-    }
-    useEffect(() => {
-        getCollection()
-    }, [])
-    const handleSort = (sort) => {
-        setSortValue(sort)
-    }
-    useMemo(()=>{
-        if(sortValue){
-            let newSortList = [...collectionRedux].sort((a,b)=>a[sortValue].localeCompare(b[sortValue]))
-            dispatch(setCollection(newSortList))
-        }
-    },[sortValue])
-
-
     return <>
         <div className="catalog-section-admin">
             <div className="catalog-parts-title">
@@ -72,42 +63,47 @@ const Collections = () => {
 
                 <div className="filter-catalog-box">
                     <div className="search-filter">
-                        <CostumersInput placeholder="Search Here"/>
+                        <CostumersInput
+                            onchange={(e)=>setSortAndSearch({...sortAndSearch,query: e.target.value})}
+                            placeholder="Search Here"
+                        />
                         <span className="icon-search"></span>
                     </div>
                     <div className="sort-select-box">
                         <MySelect
                             defaultValue={"Sort"}
-                            value={sortValue}
-                            optionList={optionListSort}
-                            onchange={handleSort}
+                            value={sortAndSearch.sort}
+                            optionList={[
+                                {value: 'name', name: 'Name', id: 1},
+                                {value: 'img', name: 'Count', id: 1},
+                            ]}
+                            onchange={(sortValue) => (setSortAndSearch({...sortAndSearch, sort: sortValue}))}
                         />
                     </div>
                 </div>
             </div>
             {!loading ?
-              <>
-                  {collectionRedux.length?
-                      <div className="catalog-parts-boxes">
-                          <div className="collection-title-text"><p>COLLECTIONS</p></div>
-                          <div className="catalog-boxes-container">
-                              {collectionRedux.map((item, index) => {
-                                  return <CatalogItems
-                                      item={item}
-                                      key={index}
-                                  />
+                <>
+                    {sortedAndSearchedProductList.length ?
+                        <div className="catalog-parts-boxes">
+                            <div className="collection-title-text"><p>COLLECTIONS</p></div>
+                            <div className="catalog-boxes-container">
+                                {sortedAndSearchedProductList.map((item, index) => {
+                                    return <CatalogItems
+                                        item={item}
+                                        key={index}
+                                    />
 
-                              })}
-                          </div>
+                                })}
+                            </div>
 
-                      </div>
-
-                      : <EmptyList handleClick={handleClick} productType={"Catalog"}/>}
-              </>
-             : <div>Loading...</div>
+                        </div>
+                        : <EmptyList handleClick={handleClick} productType={"Catalog"}/>}
+                </>
+                : <div className="loading-collection">
+                    <Loader/>
+                </div>
             }
-
-
 
 
         </div>

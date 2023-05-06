@@ -4,10 +4,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteCollection} from "../../../../store/reducers/collection";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import usePartsCollectionServices from "../../../API/collectionServices";
+import useCollectionServices from "../../../API/collectionServices";
 
 const DeleteCollection = ({name, onClose, id}) => {
     const collectionRedux = useSelector(state => state.Collection.collectionList)
-    const [btnDelete,setBtnDelete] = useState(true)
+    const [btnDelete, setBtnDelete] = useState(true)
 
     const dispatch = useDispatch()
     const deleteCollectionRedux = async () => {
@@ -17,8 +19,8 @@ const DeleteCollection = ({name, onClose, id}) => {
 
     }
     const btnDeleteText = () => {
-         let newTextBtn = 'Yes'
-        if(btnDelete === false){
+        let newTextBtn = 'Yes'
+        if (btnDelete === false) {
             newTextBtn = 'Deleting...'
         }
         return newTextBtn
@@ -27,13 +29,12 @@ const DeleteCollection = ({name, onClose, id}) => {
 
     const deleteCollectionCrud = async () => {
         setBtnDelete(false)
-        const result = await axios.delete(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection/${id}`)
+        const result = await useCollectionServices.deleteCollection(id)
         if (result) {
             setBtnDelete(true)
         }
 
     }
-
 
     return <div className="delete-product-box">
         <div className="delete-text"><h3>Are you sure you want to delete {name}?</h3></div>

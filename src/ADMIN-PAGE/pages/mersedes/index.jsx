@@ -1,6 +1,6 @@
 import "./style.scss"
 import AutoParts from "../autoParts";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import axios from "axios";
 import {setProduct} from "../../../store/reducers/createAutoParts";
 import {useEffect, useState} from "react";

@@ -1,7 +1,7 @@
 import "./style.scss"
 import React, {useEffect, useState} from "react";
 import {NavLink} from "react-router-dom";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import Payment from "./payment";
 import MyInput from "../../../UI/MyInput";
 import EmptyList from "../../Components/emptyList";

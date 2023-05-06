@@ -1,6 +1,6 @@
 import "./style.scss"
 import AutoParts from "../autoParts";
-import useInformation from "../../../hooks/test-information";
+import useInformation from "../../../test-information";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import axios from "axios";
