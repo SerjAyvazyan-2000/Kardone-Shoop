@@ -23,6 +23,18 @@ export default class useAutoPartsServices {
         }
 
     }
+
+    static async getProductId(id) {
+        try {
+            const response = await axios.get(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts/${id}`)
+            return response.data
+
+        }catch (error){
+            alert(" error getProductId")
+
+        }
+
+    }
     static async deleteAutoParts(id) {
         try {
             const response = await axios.delete(`https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts/${id}`)
