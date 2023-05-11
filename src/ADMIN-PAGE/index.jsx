@@ -22,7 +22,7 @@ const AdminPage = () => {
             <main className="scroll-container">
                 <div className="routing-container">
                     <Routes>
-                        <Route index path="*" element={<Dashboard/>}/>
+                        <Route index path="*" element={<Collections/>}/>
                         <Route path="dashboard" element={<Dashboard/>}/>
                         <Route path="bmw" element={<Bmw/>}/>
                         <Route path="mercedes" element={<Mercedes/>}/>

@@ -35,7 +35,7 @@ const Collections = () => {
     const [autoPartsList,setAutoPartsList] = useState([])
     const sortedAndSearchedProductList =  useProducts(collectionRedux,sortAndSearch.sort,sortAndSearch.query)
 
-    const {fetching, loading, error} = useFetching(async () => {
+    const [fetching, loading, error] = useFetching(async () => {
         const result = await useCollectionServices.getCollection()
         dispatch(setCollection(result))
     })
