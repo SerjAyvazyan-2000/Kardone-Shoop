@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Kardone-Shoop/static/css/main.1193d3d8.css",
-    "main.js": "/Kardone-Shoop/static/js/main.25b8beb2.js",
+    "main.js": "/Kardone-Shoop/static/js/main.15b8687b.js",
     "static/js/787.28cb0dcd.chunk.js": "/Kardone-Shoop/static/js/787.28cb0dcd.chunk.js",
     "static/media/logo.png": "/Kardone-Shoop/static/media/logo.6ac8043b30b6c71885d0.png",
     "static/media/banner1.webp": "/Kardone-Shoop/static/media/banner1.ae99e477d84c2b7c336e.webp",
@@ -27,11 +27,11 @@
     "static/media/slick.woff": "/Kardone-Shoop/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Kardone-Shoop/index.html",
     "main.1193d3d8.css.map": "/Kardone-Shoop/static/css/main.1193d3d8.css.map",
-    "main.25b8beb2.js.map": "/Kardone-Shoop/static/js/main.25b8beb2.js.map",
+    "main.15b8687b.js.map": "/Kardone-Shoop/static/js/main.15b8687b.js.map",
     "787.28cb0dcd.chunk.js.map": "/Kardone-Shoop/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1193d3d8.css",
-    "static/js/main.25b8beb2.js"
+    "static/js/main.15b8687b.js"
   ]
 }
