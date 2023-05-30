@@ -4,7 +4,6 @@ import EditAutoParts from "./reducers/editAutoParts";
 import CreateAutoParts from "./reducers/createAutoParts";
 import GetAutoParts from "./reducers/getAutoParts";
 import BasketProduct from "./reducers/basketProduct";
-import AutoPartsCount from "./reducers/autoPartsCount";
 
 
 const store = configureStore({
@@ -14,7 +13,6 @@ const store = configureStore({
           EditAutoParts,
           GetAutoParts,
           BasketProduct,
-          AutoPartsCount
      }
 })
 

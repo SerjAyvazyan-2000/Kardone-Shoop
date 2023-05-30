@@ -16,12 +16,12 @@ import DeleteProduct from "./deleteCatalog";
 import DeleteCollection from "./deleteCatalog";
 import CatalogItems from "./catalogItems";
 import {setProduct} from "../../../store/reducers/createAutoParts";
-import usePartsCollectionServices from "../../API/collectionServices";
+import usePartsCollectionServices from "../../../API/collectionServices";
 import Loader from "../../../UI/loader/loader";
 import {useFetching} from "../../../hooks/useFetching";
 import {useProducts} from "../../../hooks/useSortProducts";
-import useCollectionServices from "../../API/collectionServices";
-import useAutoPartsServices from "../../API/autoPartsServices";
+import useCollectionServices from "../../../API/collectionServices";
+import useAutoPartsServices from "../../../API/autoPartsServices";
 
 const Collections = () => {
     const collectionRedux = useSelector(state => state.Collection.collectionList)

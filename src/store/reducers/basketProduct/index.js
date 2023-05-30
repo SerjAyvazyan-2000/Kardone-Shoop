@@ -12,7 +12,6 @@ const BasketProduct = createSlice({
     reducers:{
         setProduct:(state,action) => {
             state.basketList = [...state.basketList,action.payload]
-            // state.basketList.push(action.payload)
         },
         // deleteProduct :(state,action)=>{
         //     state.autoPartsList.forEach((item,index)=>{
@@ -22,13 +21,6 @@ const BasketProduct = createSlice({
         //     })
         //    state.BmwProductList.filter(item => item._id !== action.payload)
         // }
-        localProduct:(state,action)=>{
-            const localWentList =  JSON.parse(localStorage.getItem('wentBasket'))
-            if( localWentList){
-                state.basketList = [...state.basketList,localWentList]
-
-            }
-        }
 
     }
 })

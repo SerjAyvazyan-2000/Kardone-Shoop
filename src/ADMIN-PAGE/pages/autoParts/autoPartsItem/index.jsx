@@ -46,7 +46,6 @@ const AutoPartsItem = ({carName, autoPartsList, loading,starsList,deleteAutoPart
                                         <p>{element.name}</p>
                                     </div>
                                     <div className="parts-prise-sale-box">
-                                        <div className="parts-sales"><p> Sales</p></div>
 
                                         <div className="parts-prise"><p><i
                                             className="icon-coin-dollar"></i>{element.price}
@@ -56,21 +55,6 @@ const AutoPartsItem = ({carName, autoPartsList, loading,starsList,deleteAutoPart
                                         <p>{element.productTags}</p>
                                     </div>
                                     <div className="parts-stars-remove">
-                                        {element.starPoints ?
-                                            <>
-
-                                                {/*{element.starPoints.length ?*/}
-                                                {/*    <>*/}
-                                                {/*            <div className="parts-stars">*/}
-                                                {/*                {starsList.map((item, index) => {*/}
-                                                {/*                    return <span>&#11088;</span>*/}
-                                                {/*                })}*/}
-                                                {/*            </div>*/}
-                                                {/*    </>*/}
-                                                {/*    : null}*/}
-                                            </>
-                                            : null}
-
 
                                         <div className="parts-remove">
                                             <MyButton onClick={() => deleteAutoParts(element._id)}

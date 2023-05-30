@@ -1,14 +1,26 @@
 
-
 .loader-box{
-  width: 100px;
-  height: 100px;
+   position: relative;
+  margin: 0 auto;
+  width: 60px;
+  height: 60px;
+}
+.loader{
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   border: 3px dashed red;
   animation: rotate 1s infinite linear;
-  position: relative;
 
 }
+.loader-text{
+  position: absolute;
+  color: red;
+  left: 0;
+  top: 50%;
+
+}
+
 
 @keyframes rotate {
   from{

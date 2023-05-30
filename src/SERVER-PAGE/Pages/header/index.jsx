@@ -18,12 +18,7 @@ const Header = () => {
     const openSubMenu = () => {
         setSubMenu(!subMenu)
     }
-    // useEffect(() => {
-    //     const localWentList =  JSON.parse(localStorage.getItem('wentBasket'))
-    //     if(localWentList){
-    //         dispatch(setProduct(localWentList))
-    //     }
-    // },[])
+
     const burgerMenu = () =>{
         setOpenMenu(!openMenu)
     }
@@ -112,20 +107,6 @@ const Header = () => {
                                 <NavLink to="/sale">Sale
                                     <span onClick={openSubMenu} className="menu-arrow"></span>
                                 </NavLink>
-                                <ul className="sub-menu-list-sale">
-                                    <li>
-                                        <div>Img</div>
-                                    </li>
-                                    <li>
-                                        <div>Img</div>
-                                    </li>
-                                    <li>
-                                        <div>Img</div>
-                                    </li>
-                                    <li>
-                                        <div>Img</div>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                     </nav>

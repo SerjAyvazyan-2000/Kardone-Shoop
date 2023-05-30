@@ -2,35 +2,20 @@ import "./style.scss"
 import Header from "../header";
 import useInformation from "../../../test-information";
 import React, {useEffect, useState} from "react";
-import Counter from "./counter";
+import Counter from "../../Components/counter";
 import ScrollTop from "../../Components/scrollTop";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {localProduct, setProduct} from "../../../store/reducers/basketProduct";
-import {countMinus, countPlus} from "../../../store/reducers/autoPartsCount";
 
 const Basket = () => {
     const dispatch = useDispatch()
     const {featuredProducts} = useInformation()
     const basketList = useSelector(state => state.BasketProduct.basketList)
-    const partsCount = useSelector(state => state.AutoPartsCount.partsCount)
     const [totalPrise,setTotalPrise] = useState(0)
     const [totalWeight,setTotalWeight] = useState(0)
 
-
-    //
-    // useEffect(() => {
-    //       dispatch(localProduct())
-    // },[])
-
-    // const handleClickPlus = () => {
-    //     dispatch(countPlus(1))
-    // }
-    // const handleClickMinus = () => {
-    //     if (partsCount !== 0) {
-    //         dispatch(countMinus(1))
-    //     }
-    // }
+    
     useEffect(()=>{
         let price = 0
         let weight = 0
@@ -43,7 +28,6 @@ const Basket = () => {
 
               })
          }
-
     },[])
 
 
@@ -86,7 +70,7 @@ const Basket = () => {
                                                     <span>Color</span>: {item.Color}
                                                 </p>
                                                 <p>
-                                                    <span>Count</span>: {partsCount}
+                                                    <span>Count</span>
                                                 </p>
                                                 <p>
                                                     <span>ProductType</span>: {item.productType}

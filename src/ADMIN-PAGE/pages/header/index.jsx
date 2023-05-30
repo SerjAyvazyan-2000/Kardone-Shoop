@@ -14,7 +14,7 @@ const Header = ({setNavActive,navActive}) => {
         {/*Search*/}
         <div className="search">
             <label htmlFor="">
-                <input type="text" placeholder="Search here"/>
+                <input onChange={()=>(alert("Search is in Process Sorry)"))} type="text" placeholder="Search here"/>
                 <AiOutlineSearch/>
             </label>
         </div>

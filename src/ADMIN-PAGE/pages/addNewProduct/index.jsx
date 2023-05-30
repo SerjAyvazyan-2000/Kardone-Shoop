@@ -13,8 +13,8 @@ import useValidateNewProduct from "./validateNewProduct";
 import AutoPartsImages from "./autoPartsImages";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import useAutoPartsServices from "../../API/autoPartsServices";
-import useCollectionServices from "../../API/collectionServices";
+import useAutoPartsServices from "../../../API/autoPartsServices";
+import useCollectionServices from "../../../API/collectionServices";
 
 
 const AddNewProduct = () => {
@@ -186,18 +186,7 @@ const AddNewProduct = () => {
         }
     }, [])
 
-    // const updateCollection = async (id) => {
-    //      const result = await useCollectionServices.updateCollection(id)
-    //     console.log(result,"fsyo update exav")
-    // }
-    // function setProductCollection (newAutoParts) {
-    //     collectionList.forEach((item,index)=>{
-    //          if(item.name === newAutoParts.productType){
-    //             item.productList.push(newAutoParts)
-    //              updateCollection(item._id)
-    //          }
-    //     })
-    // }
+
 
     return <>
         <div className="add-new-product-section">
@@ -270,13 +259,10 @@ const AddNewProduct = () => {
                                     onchange={handelChange}
                                     value={newAutoParts.price}
                                     errorText={errorText.price}
+                                    type={"number"}
+
                                 />
                             </div>
-                            {/*временно, пусть останется здесь и напишите максимально возможную цену со скидкой*/}
-                            {/*<div className="product-compare-price">*/}
-                            {/*    <CostumersInput nameText="Compare at Price" placeholder={"00:00"}/>*/}
-                            {/*</div>*/}
-                            {/*временно, пусть останется здесь и напишите максимально возможную цену со скидкой*/}
 
                             <div className="product-compare-price">
                                 <MyInput

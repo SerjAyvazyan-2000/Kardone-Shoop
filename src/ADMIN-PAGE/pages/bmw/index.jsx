@@ -6,7 +6,7 @@ import {setCollection} from "../../../store/reducers/collection";
 import {useDispatch, useSelector} from "react-redux";
 import {setProduct} from "../../../store/reducers/createAutoParts";
 import {useEffect, useState} from "react";
-import useAutoPartsServices from "../../API/autoPartsServices";
+import useAutoPartsServices from "../../../API/autoPartsServices";
 
 const Bmw = () => {
     const {featuredProducts} = useInformation()

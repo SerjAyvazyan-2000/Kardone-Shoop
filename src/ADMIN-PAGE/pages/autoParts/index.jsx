@@ -10,7 +10,7 @@ import {useDispatch} from "react-redux";
 import {deleteProduct, setProduct} from "../../../store/reducers/createAutoParts";
 import axios from "axios";
 import AutoPartsItem from "./autoPartsItem";
-import useAutoPartsServices from "../../API/autoPartsServices";
+import useAutoPartsServices from "../../../API/autoPartsServices";
 import {useProducts} from "../../../hooks/useSortProducts";
 
 const AutoParts = ({carName, autoPartsList, loading}) => {

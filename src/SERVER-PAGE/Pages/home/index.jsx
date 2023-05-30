@@ -16,7 +16,7 @@ import axios from "axios";
 import LoaderBox from "../../Components/loaderBox";
 import {useDispatch, useSelector} from "react-redux";
 import {setProduct} from "../../../store/reducers/getAutoParts";
-import useAutoPartsServices from "../../../ADMIN-PAGE/API/autoPartsServices";
+import useAutoPartsServices from "../../../API/autoPartsServices";
 import Loader from "../../../UI/loader/loader";
 
 const Home = () => {
@@ -71,7 +71,6 @@ const Home = () => {
                         }) : null}
                     </div>
                         : <div className="home-loader">
-                            <LoaderBox loading={loading}/>
                              <Loader/>
                         </div>}
                 </div>

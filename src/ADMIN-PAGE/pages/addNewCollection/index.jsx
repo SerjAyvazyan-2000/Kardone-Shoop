@@ -11,8 +11,8 @@ import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {editCollection, setCollection} from "../../../store/reducers/collection";
 import 'react-toastify/dist/ReactToastify.css';
-import usePartsCollectionServices from "../../API/collectionServices";
-import useCollectionServices from "../../API/collectionServices";
+import usePartsCollectionServices from "../../../API/collectionServices";
+import useCollectionServices from "../../../API/collectionServices";
 
 
 const AddNewCollection = ({onClose, editItem}) => {

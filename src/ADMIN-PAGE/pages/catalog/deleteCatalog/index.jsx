@@ -4,8 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteCollection} from "../../../../store/reducers/collection";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import usePartsCollectionServices from "../../../API/collectionServices";
-import useCollectionServices from "../../../API/collectionServices";
+import usePartsCollectionServices from "../../../../API/collectionServices";
+import useCollectionServices from "../../../../API/collectionServices";
 
 const DeleteCollection = ({name, onClose, id}) => {
     const collectionRedux = useSelector(state => state.Collection.collectionList)

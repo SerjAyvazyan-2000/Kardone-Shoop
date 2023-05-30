@@ -8,49 +8,22 @@ import axios from "axios";
 import LoaderBox from "../../Components/loaderBox";
 import {useSelector} from "react-redux";
 import EmptyList from "../../Components/emptyList";
+import {useFetching} from "../../../hooks/useFetching";
+import useCollectionServices from "../../../API/collectionServices";
+import Loader from "../../../UI/loader/loader";
 
 
 const Catalog = () => {
-    // const {catalog} = useInformation()
     const [catalog, setCatalog] = useState([])
-    const [autoParts, setAutoParts] = useState([])
-    const [autoPartsCount, setAutoPartsCount] = useState([])
+    const  [fetching,loading,error] = useFetching(async ()=>{
+        const result = await useCollectionServices.getCollection()
+        setCatalog(result)
+    })
 
-    const [loading, setLoading] = useState(false)
-    const autoPartsListRedux = useSelector(state => state.GetAutoParts.autoPartsList)
 
-    const getAutoParts = async () => {
-        setLoading(true)
-        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newAutoParts')
-        if (result.data) {
-            // handleAutoPartsCount()
-            setLoading(false)
-            setAutoParts(result.data)
 
-        }
-    }
-    const handleAutoPartsCount = () => {
-        if(catalog.length){
-            catalog.forEach((element,index)=>{
-                let newList = autoParts.filter(item => item.productType === element.name)
-
-            })
-        }
-    }
-
-    const getCatalog = async () => {
-        setLoading(true)
-        const result = await axios.get('https://crudcrud.com/api/930f836115ae432ead0852485b104105/newCollection')
-        if (result.data) {
-            setLoading(false)
-            setCatalog(result.data)
-
-        }
-    }
     useEffect(() => {
-        getCatalog()
-        getAutoParts()
-
+        fetching()
     }, [])
 
     return <>
@@ -73,7 +46,7 @@ const Catalog = () => {
             <div className="G-container">
                 {!loading ?
                 <>
-                    {catalog.length ?
+                    {catalog.length?
                         <div className="catalog-pages">
                             {catalog.map((item, index) => {
 
@@ -94,10 +67,10 @@ const Catalog = () => {
 
                     : <EmptyList/>}
 
-
-
                 </>
-                : <LoaderBox loading={loading}/>}
+                :
+                    <Loader loading={loading}/>
+                  }
 
             </div>
 
