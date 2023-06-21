@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Kardone-Shoop/static/css/main.5ea5c7fd.css",
-    "main.js": "/Kardone-Shoop/static/js/main.db73b878.js",
+    "main.css": "/Kardone-Shoop/static/css/main.05160e82.css",
+    "main.js": "/Kardone-Shoop/static/js/main.bc6bd41e.js",
     "static/js/787.28cb0dcd.chunk.js": "/Kardone-Shoop/static/js/787.28cb0dcd.chunk.js",
     "static/media/logo.png": "/Kardone-Shoop/static/media/logo.6ac8043b30b6c71885d0.png",
     "static/media/banner1.webp": "/Kardone-Shoop/static/media/banner1.ae99e477d84c2b7c336e.webp",
@@ -10,28 +10,24 @@
     "static/media/slider-1.webp": "/Kardone-Shoop/static/media/slider-1.cccaced5176c597f9c02.webp",
     "static/media/slider-2.webp": "/Kardone-Shoop/static/media/slider-2.eb37dd91b754b679b875.webp",
     "static/media/slider-4.webp": "/Kardone-Shoop/static/media/slider-4.85ecfd9e33258f1ee5e9.webp",
-    "static/media/icomoon.svg?jvywn3": "/Kardone-Shoop/static/media/icomoon.eee1e5c2af20d9e86662.svg",
     "static/media/product5.avif": "/Kardone-Shoop/static/media/product5.0c5117f9ae45224d9f6d.avif",
     "static/media/product7.avif": "/Kardone-Shoop/static/media/product7.c9d09003cd46244a4811.avif",
     "static/media/product6.avif": "/Kardone-Shoop/static/media/product6.596a42258d66016dfee1.avif",
     "static/media/product2.avif": "/Kardone-Shoop/static/media/product2.feaff5ea3b2ee4685269.avif",
     "static/media/product4.avif": "/Kardone-Shoop/static/media/product4.57c28fabb13d0e565f4a.avif",
-    "static/media/icomoon.eot?jvywn3": "/Kardone-Shoop/static/media/icomoon.d48a00959d6a209e6c1a.eot",
     "static/media/product1.avif": "/Kardone-Shoop/static/media/product1.a008a8c05cd9516bd717.avif",
-    "static/media/icomoon.woff?jvywn3": "/Kardone-Shoop/static/media/icomoon.26633ad8c0705a6970ed.woff",
-    "static/media/icomoon.ttf?jvywn3": "/Kardone-Shoop/static/media/icomoon.4390ab5bd6e1f322ea57.ttf",
     "static/media/product3.avif": "/Kardone-Shoop/static/media/product3.8ed547279187e33823c8.avif",
     "static/media/slick.svg": "/Kardone-Shoop/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/Kardone-Shoop/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/Kardone-Shoop/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Kardone-Shoop/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Kardone-Shoop/index.html",
-    "main.5ea5c7fd.css.map": "/Kardone-Shoop/static/css/main.5ea5c7fd.css.map",
-    "main.db73b878.js.map": "/Kardone-Shoop/static/js/main.db73b878.js.map",
+    "main.05160e82.css.map": "/Kardone-Shoop/static/css/main.05160e82.css.map",
+    "main.bc6bd41e.js.map": "/Kardone-Shoop/static/js/main.bc6bd41e.js.map",
     "787.28cb0dcd.chunk.js.map": "/Kardone-Shoop/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ea5c7fd.css",
-    "static/js/main.db73b878.js"
+    "static/css/main.05160e82.css",
+    "static/js/main.bc6bd41e.js"
   ]
 }
